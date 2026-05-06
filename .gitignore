@@ -1,0 +1,5 @@
+# Local analysis database (not needed for GitHub Pages)
+*.duckdb
+*.duckdb.wal
+__pycache__/
+.DS_Store

@@ -1,0 +1,11 @@
+date,symbol,name,asset_type,market,shares,price,currency,sector,note
+2026-05-01,00646,元大S&P500,ETF,TW,10,45.50,TWD,US Equity,核心配置
+2026-05-01,00981A,統一台股增長主動式ETF,ETF,TW,20,10.20,TWD,Taiwan Active ETF,衛星配置
+2026-05-01,00894,中信小資高價30,ETF,TW,15,18.80,TWD,Taiwan Equity,衛星配置
+2026-05-02,AAPL,Apple Inc.,Stock,US,3,185.30,USD,Technology,美股個股
+2026-05-02,NVDA,NVIDIA Corp.,Stock,US,2,910.20,USD,Technology,AI 主題
+2026-05-02,TSM,Taiwan Semiconductor ADR,Stock,US,4,142.60,USD,Semiconductor,台積電 ADR
+2026-05-03,00646,元大S&P500,ETF,TW,5,46.10,TWD,US Equity,加碼
+2026-05-03,00981A,統一台股增長主動式ETF,ETF,TW,10,10.35,TWD,Taiwan Active ETF,加碼
+2026-05-04,GLD,SPDR Gold Shares,ETF,US,1,225.40,USD,Gold,避險資產
+2026-05-04,BND,Vanguard Total Bond Market ETF,ETF,US,6,72.15,USD,Bond,債券配置
