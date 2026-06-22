@@ -118,7 +118,7 @@
       
       <!-- KLine / MA Chart -->
       <div class="lg:col-span-2 bg-slate-900/60 p-6 rounded-3xl border border-slate-800 shadow-xl">
-        <h2 class="text-xl font-bold text-white mb-4">台積電股價走勢與均線 (5MA / 20MA / 60MA)</h2>
+        <h2 id="chart-title" class="text-xl font-bold text-white mb-4">股價走勢與均線 (5MA / 20MA / 60MA)</h2>
         <div class="relative h-96 w-full">
           <canvas id="priceChart"></canvas>
         </div>
@@ -144,9 +144,7 @@
           </div>
           <div class="mt-6 border-t border-gray-800 pt-6">
             <h3 class="text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest">Akasha 助理短評 🌸</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">
-              台積電（2330）目前受惠於 3 奈米製程及 CoWoS 封裝技術在 AI 晶片市場上供不應求，加上 2026 年 COUPE 平台及博通等大廠的 CPO 矽光子技術商轉，基本面底氣非常硬。即便短線隨大盤拉回或受地緣政治震盪，回撤控制在 -12.66% 內依然屬於健康的修正區間。適合按照我們的 60-30-10 核心配置進行中長線分批佈局。
-            </p>
+            <p id="assistant-comment" class="text-xs text-gray-400 leading-relaxed">讀取資料中，稍後自動產生量化短評。</p>
           </div>
         </div>
         <div class="text-xs text-gray-500 mt-6 bg-slate-950/40 p-4 rounded-xl border border-slate-800/60">
@@ -166,11 +164,7 @@
           <div>
             <div class="w-10 h-10 rounded-2xl bg-blue-900/60 text-blue-400 flex items-center justify-center font-bold text-lg mb-4">S</div>
             <h3 class="text-lg font-bold text-blue-400 mb-3">優勢 (Strengths)</h3>
-            <ul class="text-xs text-gray-400 space-y-2.5 list-disc pl-4">
-              <li>先進製程（3nm/2nm）絕對壟斷地位，訂單能見度看至2028年。</li>
-              <li>先進封裝 CoWoS 產能供不應求，為 AI 晶片唯一核心代工。</li>
-              <li>第一代 COUPE 平台將於2026年量產，引領矽光子商轉。</li>
-            </ul>
+            <ul id="swot-strengths" class="text-xs text-gray-400 space-y-2.5 list-disc pl-4"></ul>
           </div>
         </div>
 
@@ -179,11 +173,7 @@
           <div>
             <div class="w-10 h-10 rounded-2xl bg-orange-900/60 text-orange-400 flex items-center justify-center font-bold text-lg mb-4">W</div>
             <h3 class="text-lg font-bold text-orange-400 mb-3">劣勢 (Weaknesses)</h3>
-            <ul class="text-xs text-gray-400 space-y-2.5 list-disc pl-4">
-              <li>資本支出（CAPEX）極其龐大，面臨高折舊與高研發費用壓力。</li>
-              <li>台灣缺水、缺電與高電費政策，對高度敏感的晶圓廠是一大成本壓力。</li>
-              <li>海外設廠（美、德、日）面臨高昂的人工與建置成本。</li>
-            </ul>
+            <ul id="swot-weaknesses" class="text-xs text-gray-400 space-y-2.5 list-disc pl-4"></ul>
           </div>
         </div>
 
@@ -192,11 +182,7 @@
           <div>
             <div class="w-10 h-10 rounded-2xl bg-green-900/60 text-emerald-400 flex items-center justify-center font-bold text-lg mb-4">O</div>
             <h3 class="text-lg font-bold text-emerald-400 mb-3">機會 (Opportunities)</h3>
-            <ul class="text-xs text-gray-400 space-y-2.5 list-disc pl-4">
-              <li>NVIDIA 新一代 Rubin 與博通 CPO 交換器的大規模資料中心建置潮。</li>
-              <li>各大雲端廠商（CSP）自研 AI 晶片，持續推升 ASIC 委託代工。</li>
-              <li>全球主動式台股 ETF（如 00981A、00894）的增長將帶來被動買盤。</li>
-            </ul>
+            <ul id="swot-opportunities" class="text-xs text-gray-400 space-y-2.5 list-disc pl-4"></ul>
           </div>
         </div>
 
@@ -205,11 +191,7 @@
           <div>
             <div class="w-10 h-10 rounded-2xl bg-red-900/60 text-rose-400 flex items-center justify-center font-bold text-lg mb-4">T</div>
             <h3 class="text-lg font-bold text-rose-400 mb-3">威脅 (Threats)</h3>
-            <ul class="text-xs text-gray-400 space-y-2.5 list-disc pl-4">
-              <li>台海地緣政治風險，面臨各國要求供應鏈分散的壓力。</li>
-              <li>三星、英特爾等對手在下一代奈米製程及背部供電技術的挑戰。</li>
-              <li>總體經濟通膨及美國降息幅度不確定性影響科技股估值。</li>
-            </ul>
+            <ul id="swot-threats" class="text-xs text-gray-400 space-y-2.5 list-disc pl-4"></ul>
           </div>
         </div>
 
@@ -249,6 +231,80 @@
 
   <!-- Dynamic JS Script -->
   <script>
+    function setListItems(elementId, items) {
+      const list = document.getElementById(elementId);
+      if (!list) return;
+      list.innerHTML = '';
+      items.forEach(text => {
+        const li = document.createElement('li');
+        li.innerText = text;
+        list.appendChild(li);
+      });
+    }
+
+    function buildGenericSwot(data) {
+      const summary = data.summary;
+      const drawdown = data.drawdown;
+      const latest = data.chart_data[data.chart_data.length - 1] || {};
+      const close = Number(summary.last_close || 0).toLocaleString();
+      const weeklyReturn = Number(summary.weekly_return_pct || 0);
+      const drawdownPct = Number(drawdown.current_drawdown_pct || 0);
+      const ma5 = Number(latest.MA5 || 0);
+      const ma20 = Number(latest.MA20 || 0);
+      const ma60 = Number(latest.MA60 || 0);
+      const trendLabel = ma5 >= ma20 && ma20 >= ma60 ? '短中長均線呈多頭排列' : ma5 >= ma20 ? '短線均線偏強，但中長線仍需觀察' : '短線均線尚未轉強，適合保守觀察';
+
+      return {
+        strengths: [
+          `最新收盤價 ${close} 元，系統已累積日 K 資料並可追蹤均線與回撤。`,
+          `${trendLabel}，可用 5MA / 20MA / 60MA 判斷趨勢結構。`,
+          `本週區間 ${summary.lowest_price.toLocaleString()} → ${summary.highest_price.toLocaleString()} 元，量價資料可持續回測。`
+        ],
+        weaknesses: [
+          `目前距歷史高點回撤 ${drawdownPct}% ，仍需留意高檔震盪或拉回風險。`,
+          `單一個股波動可能高於 ETF，需控制部位並避免追高。`,
+          `本儀表板以價格與成交資料為主，尚未納入基本面、法說與法人籌碼。`
+        ],
+        opportunities: [
+          `本週期間報酬 ${weeklyReturn >= 0 ? '+' : ''}${weeklyReturn}% ，可觀察是否形成動能延續。`,
+          `若收盤價站穩 20MA 且成交量放大，可作為後續深入研究訊號。`,
+          `可與追蹤清單內其他標的比較強弱，找出資金輪動方向。`
+        ],
+        threats: [
+          `若跌破 20MA 或回撤擴大，短線趨勢可能轉弱。`,
+          `大盤、產業消息與外資風險偏好仍會影響個股估值。`,
+          `資料來源為 ${summary.data_source || '自動資料源'}，遇到官方來源阻擋時會 fallback，仍建議重大決策前交叉驗證。`
+        ]
+      };
+    }
+
+    function renderDynamicNarrative(data) {
+      const summary = data.summary;
+      const drawdown = data.drawdown;
+      const stockName = summary.stock_name || '個股';
+      const displayCode = summary.stock_code || '';
+      const latest = data.chart_data[data.chart_data.length - 1] || {};
+      const ma5 = Number(latest.MA5 || 0);
+      const ma20 = Number(latest.MA20 || 0);
+      const trendText = ma5 >= ma20 ? '短線動能偏強' : '短線仍在整理';
+      const ret = Number(summary.weekly_return_pct || 0);
+      const retText = `${ret >= 0 ? '+' : ''}${ret}%`;
+
+      const chartTitleEl = document.getElementById('chart-title');
+      if (chartTitleEl) chartTitleEl.innerText = `${stockName} (${displayCode}) 股價走勢與均線 (5MA / 20MA / 60MA)`;
+
+      const commentEl = document.getElementById('assistant-comment');
+      if (commentEl) {
+        commentEl.innerText = `${stockName}（${displayCode}）最新收盤價為 ${Number(summary.last_close || 0).toLocaleString()} 元，本週期間報酬 ${retText}，目前距歷史高點回撤 ${drawdown.current_drawdown_pct}%。從均線角度看，${trendText}；建議把這頁作為量化監控儀表板，搭配基本面、法人籌碼與產業消息一起判讀，不單靠單一技術訊號決策。`;
+      }
+
+      const swot = buildGenericSwot(data);
+      setListItems('swot-strengths', swot.strengths);
+      setListItems('swot-weaknesses', swot.weaknesses);
+      setListItems('swot-opportunities', swot.opportunities);
+      setListItems('swot-threats', swot.threats);
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
       // Parse URL parameters to allow monitoring other stocks
       const urlParams = new URLSearchParams(window.location.search);
@@ -293,6 +349,8 @@
           
           const swotEl = document.getElementById('swot-title');
           if (swotEl) swotEl.innerText = `${stockName} (${displayCode}) 深度 SWOT 多空對決分析`;
+
+          renderDynamicNarrative(data);
 
           // Populate text fields
           document.getElementById('updated-at').innerText = data.updated_at;
@@ -432,7 +490,7 @@
 
         })
         .catch(error => {
-          console.error('Error loading 2330 JSON data:', error);
+          console.error(`Error loading ${stockCode} JSON data:`, error);
         });
     });
   </script>
