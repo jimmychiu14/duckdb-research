@@ -1,106 +1,207 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>2330 台積電本週收盤報告</title>
-<style>
-:root { --bg:#f6f8fb; --ink:#172033; --muted:#667085; --line:#dce4ef; --accent:#1f4e78; --accent-2:#2f80ed; --up:#c2410c; --down:#047857; --flat:#64748b; --shadow:0 20px 60px rgba(31,78,120,.12); }
-* { box-sizing:border-box; }
-body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC",sans-serif; background:radial-gradient(circle at top left,#eaf3ff 0,transparent 34%),var(--bg); color:var(--ink); }
-.wrap { max-width:1180px; margin:0 auto; padding:48px 22px 72px; }
-.hero { display:grid; grid-template-columns:1.35fr .65fr; gap:24px; align-items:stretch; margin-bottom:24px; }
-.card { background:rgba(255,255,255,.9); border:1px solid rgba(220,228,239,.9); border-radius:28px; box-shadow:var(--shadow); }
-.hero-main { padding:34px; }
-.badge { display:inline-flex; gap:8px; align-items:center; padding:7px 12px; border-radius:999px; background:#eef6ff; color:#1f4e78; font-size:13px; font-weight:700; }
-h1 { margin:18px 0 10px; font-size:clamp(32px,5vw,56px); line-height:1.02; letter-spacing:-.04em; }
-.sub { color:var(--muted); font-size:17px; line-height:1.65; max-width:720px; }
-.price { display:flex; gap:18px; align-items:flex-end; margin-top:28px; flex-wrap:wrap; }
-.price .label { color:var(--muted); font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
-.price .value { font-size:52px; font-weight:850; letter-spacing:-.05em; }
-.pill { padding:10px 13px; border-radius:14px; font-weight:800; margin-bottom:10px; }
-.pill.up { background:#fff1e8; color:var(--up); } .pill.down { background:#e9fbf3; color:var(--down); } .pill.flat { background:#f1f5f9; color:var(--flat); }
-.hero-side { padding:26px; display:grid; gap:14px; }
-.metric { padding:18px; border-radius:20px; background:#f8fbff; border:1px solid var(--line); }
-.metric .k { color:var(--muted); font-size:13px; margin-bottom:8px; } .metric .v { font-size:25px; font-weight:850; letter-spacing:-.03em; }
-.grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px; }
-.section { padding:26px; } .section h2 { margin:0 0 18px; font-size:22px; letter-spacing:-.02em; }
-.chart svg { width:100%; height:auto; display:block; } .chart-bg { fill:#f8fbff; } .line { fill:none; stroke:var(--accent-2); stroke-width:4; stroke-linecap:round; stroke-linejoin:round; } .dot { fill:#fff; stroke:var(--accent-2); stroke-width:3; } .chart-label { font-size:15px; fill:#172033; font-weight:800; } .axis-label { font-size:12px; fill:#667085; }
-.bar-row { display:grid; grid-template-columns:52px 1fr 116px; gap:12px; align-items:center; margin:14px 0; } .bar-date { color:var(--muted); font-weight:700; } .bar-track { height:12px; border-radius:999px; background:#e8eef6; overflow:hidden; } .bar-fill { height:100%; border-radius:999px; background:linear-gradient(90deg,#1f4e78,#2f80ed); } .bar-value { text-align:right; font-variant-numeric:tabular-nums; font-weight:700; }
-table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:20px; border:1px solid var(--line); background:#fff; } th,td { padding:14px 13px; text-align:right; border-bottom:1px solid var(--line); font-variant-numeric:tabular-nums; } th:first-child,td:first-child { text-align:left; } th { background:#1f4e78; color:#fff; font-size:13px; letter-spacing:.03em; } tr:last-child td { border-bottom:0; }
-.strong { font-weight:850; } .up { color:var(--up); } .down { color:var(--down); } .flat,.muted { color:var(--flat); } .note { color:var(--muted); font-size:13px; line-height:1.6; margin-top:14px; } .footer { text-align:center; color:var(--muted); font-size:13px; margin-top:26px; } code { background:#eef2f7; padding:2px 6px; border-radius:7px; }
-@media (max-width:860px) { .hero,.grid { grid-template-columns:1fr; } .table-scroll { overflow-x:auto; } table { min-width:850px; } .price .value { font-size:42px; } }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2330 台積電 (TSMC) 智慧數據分析儀表板</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Google Fonts for premium TC sans-serif look -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: #0b0f19;
+      color: #f3f4f6;
+    }
+    .swot-card {
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid rgba(75, 85, 99, 0.4);
+      backdrop-filter: blur(8px);
+    }
+  </style>
 </head>
-<body>
-<main class="wrap">
-  <section class="hero">
-    <div class="card hero-main">
-      <div class="badge">TWSE × DuckDB 查詢報告</div>
-      <h1>2330 台積電<br>本週每日收盤</h1>
-      <p class="sub">此網頁由 <code>duckdb-research</code> 內的 DuckDB 資料表 <strong>tw_stock_2330_weekly_close</strong> 產生，包含本週收盤價、成交量與日報酬率。</p>
-      <div class="price"><div><div class="label">最新收盤價</div><div class="value">2,250</div></div><div class="pill down">-1.10% 期間報酬</div></div>
+<body class="min-h-screen pb-16 bg-[#0b0f19] text-gray-100">
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+    
+    <!-- Top Header -->
+    <header class="flex flex-col md:flex-row justify-between items-start md:items-center pb-6 mb-8 border-b border-gray-800">
+      <div>
+        <div class="inline-flex items-center gap-2 bg-blue-900/40 text-blue-400 text-xs px-3 py-1 rounded-full font-bold border border-blue-800/60 mb-2">
+          <span class="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span>
+          DuckDB × Akasha 第二大腦驅動
+        </div>
+        <h1 class="text-3xl md:text-4xl font-black tracking-tight text-white">2330 台積電 (TSMC)</h1>
+        <p class="text-sm text-gray-400 mt-1">智慧投資 analysis 儀表板 — 高速 OLAP 核心引擎，每日收盤價與籌碼關聯分析</p>
+      </div>
+      <div class="mt-4 md:mt-0 text-right">
+        <span class="text-xs text-gray-500 block">數據更新時間</span>
+        <span id="updated-at" class="text-sm text-gray-300 font-mono font-medium">—</span>
+      </div>
+    </header>
+
+    <!-- Key Metrics Widget -->
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      
+      <!-- Current Close Card -->
+      <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-6 rounded-3xl border border-slate-800 shadow-xl relative overflow-hidden">
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">最新收盤價</span>
+        <div class="flex items-baseline gap-3 mt-2">
+          <span id="last-close" class="text-4xl font-extrabold tracking-tight text-white">—</span>
+          <span class="text-lg text-gray-300 font-medium">TWD</span>
+        </div>
+        <span id="weekly-return-pill" class="inline-block mt-3 text-xs font-black px-2.5 py-1 rounded-lg">
+          — 期間報酬
+        </span>
+      </div>
+
+      <!-- Weekly High/Low -->
+      <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-6 rounded-3xl border border-slate-800 shadow-xl">
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">本週區間價</span>
+        <div class="mt-3 flex justify-between items-center text-sm border-b border-gray-800/60 pb-2">
+          <span class="text-red-400 font-medium">▲ 最高點</span>
+          <span id="weekly-high" class="font-bold text-white text-lg">—</span>
+        </div>
+        <div class="mt-2 flex justify-between items-center text-sm">
+          <span class="text-emerald-400 font-medium">▼ 最低點</span>
+          <span id="weekly-low" class="font-bold text-white text-lg">—</span>
+        </div>
+      </div>
+
+      <!-- Max Drawdown Card -->
+      <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-6 rounded-3xl border border-slate-800 shadow-xl">
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">風險管理指標 (Drawdown)</span>
+        <div class="mt-3 flex justify-between items-center text-sm border-b border-gray-800/60 pb-2">
+          <span class="text-gray-400">當前距高點回撤</span>
+          <span id="current-drawdown" class="font-bold text-orange-400 text-lg">—</span>
+        </div>
+        <div class="mt-2 flex justify-between items-center text-sm">
+          <span class="text-gray-400">歷史最大回撤 (MDD)</span>
+          <span id="max-drawdown" class="font-bold text-red-500 text-lg">—</span>
+        </div>
+      </div>
+
+      <!-- Turn Over / Volume -->
+      <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-6 rounded-3xl border border-slate-800 shadow-xl">
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">本週交易總量</span>
+        <div class="mt-3 flex justify-between items-center text-sm border-b border-gray-800/60 pb-2">
+          <span class="text-gray-400">成交股數</span>
+          <span id="weekly-volume" class="font-bold text-gray-200 text-lg">—</span>
+        </div>
+        <div class="mt-2 flex justify-between items-center text-sm">
+          <span class="text-gray-400">成交金額 (億)</span>
+          <span id="weekly-amount" class="font-bold text-gray-200 text-lg">—</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Main Chart Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+      
+      <!-- KLine / MA Chart -->
+      <div class="lg:col-span-2 bg-slate-900/60 p-6 rounded-3xl border border-slate-800 shadow-xl">
+        <h2 class="text-xl font-bold text-white mb-4">台積電股價走勢與均線 (5MA / 20MA / 60MA)</h2>
+        <div class="relative h-96 w-full">
+          <canvas id="priceChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Summary Details Panel -->
+      <div class="bg-slate-900/60 p-6 rounded-3xl border border-slate-800 shadow-xl flex flex-col justify-between">
+        <div>
+          <h2 class="text-xl font-bold text-white mb-4">本週 DuckDB 整合摘要</h2>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center text-sm">
+              <span class="text-gray-400">統計區間</span>
+              <span id="weekly-range" class="font-mono text-gray-200 font-bold">—</span>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+              <span class="text-gray-400">區間加權均價</span>
+              <span id="weekly-avg" class="text-gray-200 font-bold">—</span>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+              <span class="text-gray-400">歷史高點記錄</span>
+              <span id="historical-peak-value" class="text-red-400 font-bold">—</span>
+            </div>
+          </div>
+          <div class="mt-6 border-t border-gray-800 pt-6">
+            <h3 class="text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest">Akasha 助理短評 🌸</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              台積電（2330）目前受惠於 3 奈米製程及 CoWoS 封裝技術在 AI 晶片市場上供不應求，加上 2026 年 COUPE 平台及博通等大廠的 CPO 矽光子技術商轉，基本面底氣非常硬。即便短線隨大盤拉回或受地緣政治震盪，回撤控制在 -12.66% 內依然屬於健康的修正區間。適合按照我們的 60-30-10 核心配置進行中長線分批佈局。
+            </p>
+          </div>
+        </div>
+        <div class="text-xs text-gray-500 mt-6 bg-slate-950/40 p-4 rounded-xl border border-slate-800/60">
+          💡 本儀表板為前後端分離架構。後台 Python 腳本調用本地 DuckDB 直接查詢 CSV 產生彙總 JSON 數據，無需維護重型資料庫，響應快如閃電。
+        </div>
+      </div>
+
     </div>
-    <aside class="card hero-side">
-      <div class="metric"><div class="k">交易期間</div><div class="v">2026-05-04 → 2026-05-06</div></div>
-      <div class="metric"><div class="k">平均收盤價</div><div class="v">2,258.33</div></div>
-      <div class="metric"><div class="k">總成交金額</div><div class="v">245,827,831,134</div></div>
-    </aside>
-  </section>
-  <section class="grid">
-    <div class="card section chart"><h2>收盤價走勢</h2><svg viewBox="0 0 560 190" role="img" aria-label="2330 本週收盤價走勢"><rect x="0" y="0" width="560" height="190" rx="20" class="chart-bg"/><line x1="28" y1="150" x2="532" y2="150" stroke="#dce4ef"/><line x1="28" y1="38" x2="532" y2="38" stroke="#dce4ef" stroke-dasharray="5 6"/><polyline points="28.0,38.0 280.0,150.0 532.0,150.0" class="line"/><g><circle cx="28.0" cy="38.0" r="5" class="dot"/><text x="28.0" y="24.0" text-anchor="middle" class="chart-label">2,275</text><text x="28.0" y="172" text-anchor="middle" class="axis-label">05-04</text></g><g><circle cx="280.0" cy="150.0" r="5" class="dot"/><text x="280.0" y="136.0" text-anchor="middle" class="chart-label">2,250</text><text x="280.0" y="172" text-anchor="middle" class="axis-label">05-05</text></g><g><circle cx="532.0" cy="150.0" r="5" class="dot"/><text x="532.0" y="136.0" text-anchor="middle" class="chart-label">2,250</text><text x="532.0" y="172" text-anchor="middle" class="axis-label">05-06</text></g></svg><div class="note">本週目前最高收盤 2,275，最低收盤 2,250。</div></div>
-    <div class="card section"><h2>成交股數比較</h2>
-<div class="bar-row">
-  <div class="bar-date">05-04</div>
-  <div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div>
-  <div class="bar-value">44,458,732</div>
-</div>
-<div class="bar-row">
-  <div class="bar-date">05-05</div>
-  <div class="bar-track"><div class="bar-fill" style="width:59.9%"></div></div>
-  <div class="bar-value">26,644,983</div>
-</div>
-<div class="bar-row">
-  <div class="bar-date">05-06</div>
-  <div class="bar-track"><div class="bar-fill" style="width:85.5%"></div></div>
-  <div class="bar-value">38,026,963</div>
-</div><div class="note">成交股數以本週最大值作為 100% 比例尺。</div></div>
-  </section>
-  <section class="card section"><h2>每日明細</h2><div class="table-scroll"><table><thead><tr><th>日期</th><th>開盤</th><th>最高</th><th>最低</th><th>收盤</th><th>漲跌</th><th>日報酬</th><th>成交股數</th><th>成交金額</th></tr></thead><tbody>
-<tr>
-  <td>2026-05-04</td>
-  <td>2,200</td>
-  <td>2,285</td>
-  <td>2,195</td>
-  <td class="strong">2,275</td>
-  <td class="up">+140</td>
-  <td class="muted">—</td>
-  <td>44,458,732</td>
-  <td>99,944,198,300</td>
-</tr>
-<tr>
-  <td>2026-05-05</td>
-  <td>2,250</td>
-  <td>2,270</td>
-  <td>2,240</td>
-  <td class="strong">2,250</td>
-  <td class="down">-25</td>
-  <td class="down">-1.10%</td>
-  <td>26,644,983</td>
-  <td>60,009,590,420</td>
-</tr>
-<tr>
-  <td>2026-05-06</td>
-  <td>2,250</td>
-  <td>2,285</td>
-  <td>2,240</td>
-  <td class="strong">2,250</td>
-  <td class="flat">0</td>
-  <td class="flat">0.00%</td>
-  <td>38,026,963</td>
-  <td>85,874,042,414</td>
-</tr></tbody></table></div><div class="note">資料來源：TWSE 臺灣證券交易所；資料經 DuckDB 從 CSV 匯入並查詢產生。</div></section>
-  <div class="footer">Generated locally in duckdb-research · 2330_weekly_report.html</div>
-</main>
-</body>
-</html>
+
+    <!-- SWOT Analysis Section (Jimmy's Favorite) -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-black text-white mb-6 tracking-tight">台積電 (2330) 深度 SWOT 多空對決分析</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Strengths -->
+        <div class="swot-card p-6 rounded-3xl shadow-xl flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-2xl bg-blue-900/60 text-blue-400 flex items-center justify-center font-bold text-lg mb-4">S</div>
+            <h3 class="text-lg font-bold text-blue-400 mb-3">優勢 (Strengths)</h3>
+            <ul class="text-xs text-gray-400 space-y-2.5 list-disc pl-4">
+              <li>先進製程（3nm/2nm）絕對壟斷地位，訂單能見度看至2028年。</li>
+              <li>先進封裝 CoWoS 產能供不應求，為 AI 晶片唯一核心代工。</li>
+              <li>第一代 COUPE 平台將於2026年量產，引領矽光子商轉。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Weaknesses -->
+        <div class="swot-card p-6 rounded-3xl shadow-xl flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-2xl bg-orange-900/60 text-orange-400 flex items-center justify-center font-bold text-lg mb-4">W</div>
+            <h3 class="text-lg font-bold text-orange-400 mb-3">劣勢 (Weaknesses)</h3>
+            <ul class="text-xs text-gray-400 space-y-2.5 list-disc pl-4">
+              <li>資本支出（CAPEX）極其龐大，面臨高折舊與高研發費用壓力。</li>
+              <li>台灣缺水、缺電與高電費政策，對高度敏感的晶圓廠是一大成本壓力。</li>
+              <li>海外設廠（美、德、日）面臨高昂的人工與建置成本。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Opportunities -->
+        <div class="swot-card p-6 rounded-3xl shadow-xl flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-2xl bg-green-900/60 text-emerald-400 flex items-center justify-center font-bold text-lg mb-4">O</div>
+            <h3 class="text-row text-lg font-bold text-emerald-400 mb-3">機會 (Opportunities)</h3>
+            <ul class="text-xs text-gray-400 space-y-2.5 list-disc pl-4">
+              <li>NVIDIA 新一代 Rubin 與博通 CPO 交換器的大規模資料中心建置潮。</li>
+              <li>各大雲端廠商（CSP）自研 AI 晶片，持續推升 ASIC 委託代工。</li>
+              <li>全球主動式台股 ETF（如 00981A、00894）的增長將帶來被動買盤。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Threats -->
+        <div class="swot-card p-6 rounded-3xl shadow-xl flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-2xl bg-red-900/60 text-rose-400 flex items-center justify-center font-bold text-lg mb-4">T</div>
+            <h3 class="text-lg font-bold text-rose-400 mb-3">威脅 (Threats)</h3>
+            <ul class="text-xs text-gray-400 space-y-2.5 list-disc pl-4">
+              <li>台海地緣政治風險，面臨各國要求供應鏈分散的壓力。</li>
+              <li>三星、英特爾等對手在下一代奈米製程及背部供電技術的挑戰。</li>
+              <li>總體經濟通膨及美國降息幅度不確定性影響科技股估值。</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Daily Details Table -->
+    <section class="bg-slate-900/40 p-6 rounded-3xl section"><h2>每日明細</h2><div class=\"table-scroll\"><table><thead><tr><th>日期</th><th>開盤</th><th>最高</th><th>最低</th><th>收盤</th><th>漲跌</th><th>日報酬</th><th>成交股數</th><th>成交金額</th></tr></thead><tbody>\n</tbody></table></div><div class=\"note\">資料來源：TWSE 臺灣證券交易所；資料經 DuckDB 從 CSV 匯入並查詢產生。</div></section>\n  <div class=\"footer\">Generated locally in duckdb-research · 2330_weekly_report.html</div>\n</main>\n<script>\n  async function loadData() {\n    try {\n      const response = await fetch('./data/2330_analysis.json');\n      const data = await response.json();\n\n      document.querySelector('.updated-at').textContent = data.updated_at;\n      \n      // Map stats\n      document.querySelector('.summary-range').textContent = `${data.summary.start_date} → ${data.summary.end_date}`;\n      document.getElementById('last-close').textContent = data.summary.last_close.toLocaleString();\n      document.getElementById('weekly-high').textContent = data.summary.highest_price.toLocaleString();\n      document.getElementById('weekly-low').textContent = data.summary.lowest_price.toLocaleString();\n      \n      const retPill = document.getElementById('weekly-return-pill');\n      const retVal = data.summary.weekly_return_pct;\n      retPill.textContent = `${retVal >= 0 ? '+' : ''}${retVal}% 期間報酬`;\n      retPill.className = retVal >= 0 \n        ? \"inline-block mt-3 text-xs font-black px-2.5 py-1 rounded-lg bg-orange-950 text-orange-400 border border-orange-900/60\"\n        : \"inline-block mt-3 text-xs font-black px-2.5 py-1 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-900/60\";\n\n      document.getElementById('current-drawdown').textContent = data.drawdown.current_drawdown_pct + '%';\n      document.getElementById('max-drawdown').textContent = data.drawdown.max_historical_drawdown_pct + '%';\n      document.getElementById('weekly-volume').textContent = (data.summary.total_volume / 1000000).toFixed(2) + ' M';\n      document.getElementById('weekly-amount').textContent = (data.summary.total_amount / 100000000).toFixed(2);\n      document.getElementById('weekly-range').textContent = `${data.summary.start_date} → ${data.summary.end_date}`;\n      document.getElementById('weekly-avg').textContent = data.summary.avg_close.toLocaleString();\n      document.getElementById('historical-peak-value').textContent = data.drawdown.historical_peak.toLocaleString() + ' 元';\n\n      // Render table rows\n      const rowsContainer = document.getElementById('detail-rows') || document.querySelector('tbody');\n      rowsContainer.innerHTML = '';\n      const reversedData = [...data.chart_data].reverse().slice(0, 10);\n      reversedData.forEach(row => {\n        const tr = document.createElement('tr');\n        tr.className = \"hover:bg-slate-900/20 text-xs text-right border-b border-gray-800/40\";\n        const isUp = row.Change >= 0;\n        const changeClass = isUp ? 'text-red-400' : 'text-emerald-400';\n        const changeSign = isUp ? '▲' : '▼';\n        tr.innerHTML = `\n          <td class=\"p-4 text-left font-mono font-bold text-gray-400\">${row.Date}</td>\n          <td class=\"p-4\">${row.Open.toLocaleString()}</td>\n          <td class=\"p-4\">${row.High.toLocaleString()}</td>\n          <td class=\"p-4\">${row.Low.toLocaleString()}</td>\n          <td class=\"p-4 text-sm font-extrabold text-white\">${row.Close.toLocaleString()}</td>\n          <td class=\"p-4 ${changeClass} font-bold\">${changeSign} ${Math.abs(row.Change).toLocaleString()}</td>\n          <td class=\"p-4 text-gray-400\">${row.Volume.toLocaleString()}</td>\n          <td class=\"p-4 text-gray-400\">${(row.Amount / 100000000).toFixed(2)}</td>\n        `;\n        rowsContainer.appendChild(tr);\n      });\n\n      // Render Chart\n      const dates = data.chart_data.map(d => d.Date);\n      const closes = data.chart_data.map(d => d.Close);\n      const ma5 = data.chart_data.map(d => d.MA5);\n      const ma20 = data.chart_data.map(d => d.MA20);\n      const ma60 = data.chart_data.map(d => d.MA60);\n\n      const ctx = document.getElementById('priceChart').getContext('2d');\n      new Chart(ctx, {\n        type: 'line',\n        data: {\n          labels: dates,\n          datasets: [\n            { label: '收盤價', data: closes, borderColor: '#ffffff', borderWidth: 2.5, pointRadius: 0, tension: 0.1 },\n            { label: '5MA', data: ma5, borderColor: '#ff7849', borderWidth: 1.5, pointRadius: 0, tension: 0.15, borderDash: [4, 4] },\n            { label: '20MA', data: ma20, borderColor: '#2196f3', borderWidth: 1.5, pointRadius: 0, tension: 0.15 },\n            { label: '60MA', data: ma60, borderColor: '#4caf50', borderWidth: 1.5, pointRadius: 0, tension: 0.15 }\n          ]\n        },\n        options: {\n          responsive: true,\n          maintainAspectRatio: false,\n          plugins: {\n            legend: { labels: { color: '#9ca3af', font: { size: 11 } } },\n            tooltip: { mode: 'index', intersect: false }\n          },\n          scales: {\n            x: { ticks: { color: '#6b7280', font: { size: 10 } } },\n            y: { ticks: { color: '#6b7280', font: { size: 10 } } }\n          }\n        }\n      });\n    } catch (e) {\n      console.error(e);\n    }\n  }\n  loadData();\n</script>\n</body>\n</html>\n
