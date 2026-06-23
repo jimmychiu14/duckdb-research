@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-23 15:40:47",
+  "updated_at": "2026-06-23 20:48:47",
   "summary": {
     "stock_code": "6770",
     "stock_name": "力積電",
@@ -10,8 +10,8 @@
     "avg_close": 75.12,
     "highest_price": 86.1,
     "lowest_price": 69.4,
-    "total_volume": 1360606722,
-    "total_amount": 104905851409,
+    "total_volume": 1363071722,
+    "total_amount": 105087028909,
     "last_close": 78.6,
     "weekly_return_pct": 10.7
   },
@@ -21,6 +21,12 @@
     "historical_peak": 88.7,
     "current_drawdown_pct": -11.39,
     "max_historical_drawdown_pct": -33.07
+  },
+  "signal": {
+    "status": "觀望",
+    "color": "yellow",
+    "emoji": "🟡",
+    "desc": "區間糾纏震盪 (5MA 與 20MA 糾結)。目前價格 TWD 78.6，5MA(75.12)、20MA(75.6)。"
   },
   "chart_data": [
     {
@@ -855,10 +861,10 @@
       "High": 86.1,
       "Low": 78.3,
       "Close": 78.6,
-      "Volume": 502473034,
-      "Amount": 41252065359,
+      "Volume": 504938034,
+      "Amount": 41433242859,
       "Change": -3.0,
-      "Transactions": 240229,
+      "Transactions": 240231,
       "MA5": 75.12,
       "MA20": 75.6,
       "MA60": 63.29

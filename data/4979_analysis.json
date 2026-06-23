@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-23 15:40:46",
+  "updated_at": "2026-06-23 20:48:47",
   "summary": {
     "stock_code": "4979",
     "stock_name": "華星光",
@@ -21,6 +21,12 @@
     "historical_peak": 718.0,
     "current_drawdown_pct": -26.88,
     "max_historical_drawdown_pct": -34.12
+  },
+  "signal": {
+    "status": "看差",
+    "color": "green",
+    "emoji": "🟢",
+    "desc": "空頭整理排列 (Close <= 5MA <= 20MA)。目前價格 TWD 525.0，5MA(551.6)、20MA(576.1)。"
   },
   "chart_data": [
     {

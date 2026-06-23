@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-23 15:40:41",
+  "updated_at": "2026-06-23 20:48:42",
   "summary": {
     "stock_code": "2330",
     "stock_name": "台積電",
@@ -10,8 +10,8 @@
     "avg_close": 2439.0,
     "highest_price": 2535.0,
     "lowest_price": 2350.0,
-    "total_volume": 199397489,
-    "total_amount": 485235457101,
+    "total_volume": 201933489,
+    "total_amount": 491571731420,
     "last_close": 2490.0,
     "weekly_return_pct": 3.75
   },
@@ -21,6 +21,12 @@
     "historical_peak": 2510.0,
     "current_drawdown_pct": -0.8,
     "max_historical_drawdown_pct": -12.66
+  },
+  "signal": {
+    "status": "看好",
+    "color": "red",
+    "emoji": "🔴",
+    "desc": "多頭強勢排列 (Close >= 5MA >= 20MA)。目前價格 TWD 2490.0，5MA(2439.0)、20MA(2355.75)。"
   },
   "chart_data": [
     {
@@ -855,10 +861,10 @@
       "High": 2535.0,
       "Low": 2490.0,
       "Close": 2490.0,
-      "Volume": 37001895,
-      "Amount": 92728430340,
+      "Volume": 39537895,
+      "Amount": 99064704659,
       "Change": -20.0,
-      "Transactions": 148597,
+      "Transactions": 148609,
       "MA5": 2439.0,
       "MA20": 2355.75,
       "MA60": 2186.92

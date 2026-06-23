@@ -395,10 +395,43 @@ def analyze_stock(target):
         "current_drawdown_pct": mdd_row[3],
         "max_historical_drawdown_pct": mdd_row[4],
     }
+    
+    # 判斷近期技術指標燈號
+    latest_day = chart_data[-1]
+    c_val = float(latest_day["Close"])
+    ma5_val = float(latest_day["MA5"]) if latest_day.get("MA5") is not None else c_val
+    ma20_val = float(latest_day["MA20"]) if latest_day.get("MA20") is not None else c_val
+    ma60_val = float(latest_day["MA60"]) if latest_day.get("MA60") is not None else c_val
+
+    # 判定規則：5MA 與 20MA 多空排列與收盤價關係
+    if c_val >= ma5_val and ma5_val >= ma20_val:
+        status = "看好"
+        color = "red"  # 台股代表上漲
+        emoji = "🔴"
+        trend_desc = "多頭強勢排列 (Close >= 5MA >= 20MA)"
+    elif c_val <= ma5_val and ma5_val <= ma20_val:
+        status = "看差"
+        color = "green"  # 台股代表下跌
+        emoji = "🟢"
+        trend_desc = "空頭整理排列 (Close <= 5MA <= 20MA)"
+    else:
+        status = "觀望"
+        color = "yellow"
+        emoji = "🟡"
+        trend_desc = "區間糾纏震盪 (5MA 與 20MA 糾結)"
+
+    signal_info = {
+        "status": status,
+        "color": color,
+        "emoji": emoji,
+        "desc": f"{trend_desc}。目前價格 TWD {c_val}，5MA({ma5_val})、20MA({ma20_val})。"
+    }
+
     analysis_payload = {
         "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "summary": weekly_summary,
         "drawdown": drawdown_info,
+        "signal": signal_info,
         "chart_data": chart_data,
     }
     with open(json_path, "w", encoding="utf-8") as f:

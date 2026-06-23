@@ -58,7 +58,7 @@
     </section>
 
     <!-- Key Metrics Widget -->
-    <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+    <section class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
       
       <!-- Current Close Card -->
       <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-6 rounded-3xl border border-slate-800 shadow-xl relative overflow-hidden">
@@ -109,6 +109,16 @@
           <span class="text-gray-400">成交金額 (億)</span>
           <span id="weekly-amount" class="font-bold text-gray-200 text-lg">—</span>
         </div>
+      </div>
+
+      <!-- Trend Signal Card -->
+      <div id="signal-card" class="bg-gradient-to-br from-slate-900 to-slate-950 p-6 rounded-3xl border border-slate-800 shadow-xl relative overflow-hidden">
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">AI 技術指標燈號</span>
+        <div class="flex items-center gap-3 mt-3">
+          <span id="signal-emoji" class="text-3xl">🟡</span>
+          <span id="signal-status" class="text-2xl font-extrabold tracking-tight text-yellow-400">觀望</span>
+        </div>
+        <p id="signal-desc" class="text-xs text-gray-500 mt-3 leading-relaxed">載入中，分析均線趨勢…</p>
       </div>
 
     </section>
@@ -374,6 +384,57 @@
           
           document.getElementById('weekly-volume').innerText = (data.summary.total_volume / 1000000).toFixed(2) + ' 百萬股';
           document.getElementById('weekly-amount').innerText = (data.summary.total_amount / 100000000).toFixed(2);
+          
+          // 渲染 AI 技術指標燈號
+          if (data.signal) {
+            document.getElementById('signal-emoji').innerText = data.signal.emoji || '🟡';
+            const statusEl = document.getElementById('signal-status');
+            statusEl.innerText = data.signal.status || '觀望';
+            
+            if (data.signal.color === 'red') {
+              statusEl.className = "text-2xl font-extrabold tracking-tight text-red-400";
+            } else if (data.signal.color === 'green') {
+              statusEl.className = "text-2xl font-extrabold tracking-tight text-emerald-400";
+            } else {
+              statusEl.className = "text-2xl font-extrabold tracking-tight text-yellow-400";
+            }
+            document.getElementById('signal-desc').innerText = data.signal.desc || '';
+          } else {
+            // Fallback: 如果 json 沒有 signal 欄位，在 JS 端動態計算
+            const latest = data.chart_data[data.chart_data.length - 1] || {};
+            const c_val = Number(latest.Close || 0);
+            const ma5_val = Number(latest.MA5 || c_val);
+            const ma20_val = Number(latest.MA20 || c_val);
+            
+            let status = "觀望";
+            let color = "yellow";
+            let emoji = "🟡";
+            let desc = "區間糾纏震盪 (5MA 與 20MA 糾結)";
+            
+            if (c_val >= ma5_val && ma5_val >= ma20_val) {
+              status = "看好";
+              color = "red";
+              emoji = "🔴";
+              desc = "多頭強勢排列 (Close >= 5MA >= 20MA)";
+            } else if (c_val <= ma5_val && ma5_val <= ma20_val) {
+              status = "看差";
+              color = "green";
+              emoji = "🟢";
+              desc = "空頭整理排列 (Close <= 5MA <= 20MA)";
+            }
+            
+            document.getElementById('signal-emoji').innerText = emoji;
+            const statusEl = document.getElementById('signal-status');
+            statusEl.innerText = status;
+            if (color === 'red') {
+              statusEl.className = "text-2xl font-extrabold tracking-tight text-red-400";
+            } else if (color === 'green') {
+              statusEl.className = "text-2xl font-extrabold tracking-tight text-emerald-400";
+            } else {
+              statusEl.className = "text-2xl font-extrabold tracking-tight text-yellow-400";
+            }
+            document.getElementById('signal-desc').innerText = `${desc}。目前價格 TWD ${c_val}，5MA(${ma5_val})、20MA(${ma20_val})。`;
+          }
           
           document.getElementById('weekly-range').innerText = data.summary.start_date + ' → ' + data.summary.end_date;
           document.getElementById('weekly-avg').innerText = data.summary.avg_close.toLocaleString();
