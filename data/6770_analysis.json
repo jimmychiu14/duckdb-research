@@ -1,42 +1,28 @@
 {
-  "updated_at": "2026-06-22 23:03:12",
+  "updated_at": "2026-06-23 15:40:47",
   "summary": {
     "stock_code": "6770",
     "stock_name": "力積電",
     "market": "twse",
     "data_source": "twse",
-    "start_date": "2026-06-15",
-    "end_date": "2026-06-22",
-    "avg_close": 74.06,
-    "highest_price": 81.6,
+    "start_date": "2026-06-16",
+    "end_date": "2026-06-23",
+    "avg_close": 75.12,
+    "highest_price": 86.1,
     "lowest_price": 69.4,
-    "total_volume": 945273566,
-    "total_amount": 69931845126,
-    "last_close": 81.6,
-    "weekly_return_pct": 11.32
+    "total_volume": 1360606722,
+    "total_amount": 104905851409,
+    "last_close": 78.6,
+    "weekly_return_pct": 10.7
   },
   "drawdown": {
-    "as_of_date": "2026-06-22",
-    "close": 81.6,
+    "as_of_date": "2026-06-23",
+    "close": 78.6,
     "historical_peak": 88.7,
-    "current_drawdown_pct": -8.0,
+    "current_drawdown_pct": -11.39,
     "max_historical_drawdown_pct": -33.07
   },
   "chart_data": [
-    {
-      "Date": "2026-03-25",
-      "Open": 64.1,
-      "High": 66.2,
-      "Low": 62.1,
-      "Close": 65.0,
-      "Volume": 278832681,
-      "Amount": 17913554201,
-      "Change": 2.3,
-      "Transactions": 135508,
-      "MA5": 69.46,
-      "MA20": 67.9,
-      "MA60": 66.8
-    },
     {
       "Date": "2026-03-26",
       "Open": 65.3,
@@ -862,6 +848,20 @@
       "MA5": 74.06,
       "MA20": 75.05,
       "MA60": 63.06
+    },
+    {
+      "Date": "2026-06-23",
+      "Open": 82.8,
+      "High": 86.1,
+      "Low": 78.3,
+      "Close": 78.6,
+      "Volume": 502473034,
+      "Amount": 41252065359,
+      "Change": -3.0,
+      "Transactions": 240229,
+      "MA5": 75.12,
+      "MA20": 75.6,
+      "MA60": 63.29
     }
   ]
 }

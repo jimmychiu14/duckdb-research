@@ -1,42 +1,28 @@
 {
-  "updated_at": "2026-06-22 23:03:11",
+  "updated_at": "2026-06-23 15:40:46",
   "summary": {
     "stock_code": "4979",
     "stock_name": "華星光",
     "market": "tpex",
     "data_source": "yahoo-two",
-    "start_date": "2026-06-15",
-    "end_date": "2026-06-22",
-    "avg_close": 556.6,
+    "start_date": "2026-06-16",
+    "end_date": "2026-06-23",
+    "avg_close": 551.6,
     "highest_price": 586.0,
-    "lowest_price": 516.0,
-    "total_volume": 22859647,
-    "total_amount": 12706711052,
-    "last_close": 552.0,
-    "weekly_return_pct": 0.36
+    "lowest_price": 525.0,
+    "total_volume": 27250278,
+    "total_amount": 14981684055,
+    "last_close": 525.0,
+    "weekly_return_pct": -7.57
   },
   "drawdown": {
-    "as_of_date": "2026-06-22",
-    "close": 552.0,
+    "as_of_date": "2026-06-23",
+    "close": 525.0,
     "historical_peak": 718.0,
-    "current_drawdown_pct": -23.12,
+    "current_drawdown_pct": -26.88,
     "max_historical_drawdown_pct": -34.12
   },
   "chart_data": [
-    {
-      "Date": "2026-03-25",
-      "Open": 411.5,
-      "High": 425.5,
-      "Low": 411.5,
-      "Close": 425.5,
-      "Volume": 15007537,
-      "Amount": 6385706994,
-      "Change": 38.5,
-      "Transactions": 0,
-      "MA5": 397.7,
-      "MA20": 400.38,
-      "MA60": 339.02
-    },
     {
       "Date": "2026-03-26",
       "Open": 426.5,
@@ -855,13 +841,27 @@
       "High": 585.0,
       "Low": 547.0,
       "Close": 552.0,
-      "Volume": 6784156,
-      "Amount": 3744854112,
+      "Volume": 6489070,
+      "Amount": 3581966640,
       "Change": -15.0,
       "Transactions": 0,
       "MA5": 556.6,
       "MA20": 582.6,
       "MA60": 559.69
+    },
+    {
+      "Date": "2026-06-23",
+      "Open": 561.0,
+      "High": 568.0,
+      "Low": 525.0,
+      "Close": 525.0,
+      "Volume": 5571355,
+      "Amount": 2924961375,
+      "Change": -27.0,
+      "Transactions": 0,
+      "MA5": 551.6,
+      "MA20": 576.1,
+      "MA60": 561.35
     }
   ]
 }
