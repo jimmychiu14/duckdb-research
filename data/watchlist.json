@@ -13,5 +13,20 @@
     "code": "6770",
     "name": "力積電",
     "market": "twse"
+  },
+  {
+    "code": "0050",
+    "name": "元大台灣50",
+    "market": "twse"
+  },
+  {
+    "code": "2317",
+    "name": "鴻海",
+    "market": "twse"
+  },
+  {
+    "code": "2308",
+    "name": "台達電",
+    "market": "twse"
   }
 ]
