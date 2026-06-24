@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-06-23 21:16:05",
+  "updated_at": "2026-06-24 15:40:21",
   "summary": {
     "stock_code": "0050",
     "stock_name": "元大台灣50",
     "market": "twse",
     "data_source": "twse",
-    "start_date": "2026-06-16",
-    "end_date": "2026-06-23",
-    "avg_close": 108.09,
+    "start_date": "2026-06-17",
+    "end_date": "2026-06-24",
+    "avg_close": 108.34,
     "highest_price": 112.3,
     "lowest_price": 104.5,
-    "total_volume": 496542889,
-    "total_amount": 53805530613,
-    "last_close": 110.1,
-    "weekly_return_pct": 3.97
+    "total_volume": 661658120,
+    "total_amount": 71587126472,
+    "last_close": 107.15,
+    "weekly_return_pct": 1.08
   },
   "drawdown": {
-    "as_of_date": "2026-06-23",
-    "close": 110.1,
+    "as_of_date": "2026-06-24",
+    "close": 107.15,
     "historical_peak": 111.15,
-    "current_drawdown_pct": -0.94,
+    "current_drawdown_pct": -3.6,
     "max_historical_drawdown_pct": -10.84
   },
   "signal": {
-    "status": "看好",
-    "color": "red",
-    "emoji": "🔴",
-    "desc": "多頭強勢排列 (Close >= 5MA >= 20MA)。目前價格 TWD 110.1，5MA(108.09)、20MA(104.49)。"
+    "status": "觀望",
+    "color": "yellow",
+    "emoji": "🟡",
+    "desc": "區間糾纏震盪 (5MA 與 20MA 糾結)。目前價格 TWD 107.15，5MA(108.34)、20MA(104.84)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-03-26",
-      "Open": 76.3,
-      "High": 76.85,
-      "Low": 75.6,
-      "Close": 75.8,
-      "Volume": 80069071,
-      "Amount": 6102674371,
-      "Change": -0.4,
-      "Transactions": 80270,
-      "MA5": 75.31,
-      "MA20": 76.61,
-      "MA60": 76.07
-    },
     {
       "Date": "2026-03-27",
       "Open": 74.45,
@@ -868,6 +854,20 @@
       "MA5": 108.09,
       "MA20": 104.49,
       "MA60": 93.37
+    },
+    {
+      "Date": "2026-06-24",
+      "Open": 108.0,
+      "High": 108.1,
+      "Low": 106.15,
+      "Close": 107.15,
+      "Volume": 235939737,
+      "Amount": 25256473313,
+      "Change": -2.95,
+      "Transactions": 420543,
+      "MA5": 108.34,
+      "MA20": 104.84,
+      "MA60": 93.89
     }
   ]
 }

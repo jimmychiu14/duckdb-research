@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-06-23 21:15:47",
+  "updated_at": "2026-06-24 15:40:04",
   "summary": {
     "stock_code": "2330",
     "stock_name": "台積電",
     "market": "twse",
     "data_source": "twse",
-    "start_date": "2026-06-16",
-    "end_date": "2026-06-23",
-    "avg_close": 2439.0,
+    "start_date": "2026-06-17",
+    "end_date": "2026-06-24",
+    "avg_close": 2437.0,
     "highest_price": 2535.0,
     "lowest_price": 2350.0,
-    "total_volume": 201933489,
-    "total_amount": 491571731420,
-    "last_close": 2490.0,
-    "weekly_return_pct": 3.75
+    "total_volume": 230617258,
+    "total_amount": 562124550996,
+    "last_close": 2390.0,
+    "weekly_return_pct": 0.21
   },
   "drawdown": {
-    "as_of_date": "2026-06-23",
-    "close": 2490.0,
+    "as_of_date": "2026-06-24",
+    "close": 2390.0,
     "historical_peak": 2510.0,
-    "current_drawdown_pct": -0.8,
+    "current_drawdown_pct": -4.78,
     "max_historical_drawdown_pct": -12.66
   },
   "signal": {
-    "status": "看好",
-    "color": "red",
-    "emoji": "🔴",
-    "desc": "多頭強勢排列 (Close >= 5MA >= 20MA)。目前價格 TWD 2490.0，5MA(2439.0)、20MA(2355.75)。"
+    "status": "觀望",
+    "color": "yellow",
+    "emoji": "🟡",
+    "desc": "區間糾纏震盪 (5MA 與 20MA 糾結)。目前價格 TWD 2390.0，5MA(2437.0)、20MA(2361.75)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-03-26",
-      "Open": 1850.0,
-      "High": 1865.0,
-      "Low": 1840.0,
-      "Close": 1840.0,
-      "Volume": 24634887,
-      "Amount": 45564939400,
-      "Change": -5.0,
-      "Transactions": 81572,
-      "MA5": 1829.0,
-      "MA20": 1876.25,
-      "MA60": 1868.06
-    },
     {
       "Date": "2026-03-27",
       "Open": 1805.0,
@@ -868,6 +854,20 @@
       "MA5": 2439.0,
       "MA20": 2355.75,
       "MA60": 2186.92
+    },
+    {
+      "Date": "2026-06-24",
+      "Open": 2435.0,
+      "High": 2445.0,
+      "Low": 2390.0,
+      "Close": 2390.0,
+      "Volume": 65829477,
+      "Amount": 158973915280,
+      "Change": -100.0,
+      "Transactions": 527584,
+      "MA5": 2437.0,
+      "MA20": 2361.75,
+      "MA60": 2196.08
     }
   ]
 }
