@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-06-24 15:40:21",
+  "updated_at": "2026-06-24 23:28:31",
   "summary": {
     "stock_code": "6770",
     "stock_name": "力積電",
     "market": "twse",
     "data_source": "twse",
-    "start_date": "2026-06-16",
-    "end_date": "2026-06-23",
-    "avg_close": 75.12,
+    "start_date": "2026-06-17",
+    "end_date": "2026-06-24",
+    "avg_close": 78.06,
     "highest_price": 86.1,
     "lowest_price": 69.4,
-    "total_volume": 1363071722,
-    "total_amount": 105087028909,
-    "last_close": 78.6,
-    "weekly_return_pct": 10.7
+    "total_volume": 1547623414,
+    "total_amount": 122770934238,
+    "last_close": 85.7,
+    "weekly_return_pct": 22.08
   },
   "drawdown": {
-    "as_of_date": "2026-06-23",
-    "close": 78.6,
+    "as_of_date": "2026-06-24",
+    "close": 85.7,
     "historical_peak": 88.7,
-    "current_drawdown_pct": -11.39,
+    "current_drawdown_pct": -3.38,
     "max_historical_drawdown_pct": -33.07
   },
   "signal": {
-    "status": "觀望",
-    "color": "yellow",
-    "emoji": "🟡",
-    "desc": "區間糾纏震盪 (5MA 與 20MA 糾結)。目前價格 TWD 78.6，5MA(75.12)、20MA(75.6)。"
+    "status": "看好",
+    "color": "red",
+    "emoji": "🔴",
+    "desc": "多頭強勢排列 (Close >= 5MA >= 20MA)。目前價格 TWD 85.7，5MA(78.06)、20MA(76.35)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-03-26",
-      "Open": 65.3,
-      "High": 67.5,
-      "Low": 62.8,
-      "Close": 62.8,
-      "Volume": 289190595,
-      "Amount": 18722999356,
-      "Change": -2.2,
-      "Transactions": 139041,
-      "MA5": 67.02,
-      "MA20": 67.2,
-      "MA60": 66.67
-    },
     {
       "Date": "2026-03-27",
       "Open": 60.5,
@@ -868,6 +854,20 @@
       "MA5": 75.12,
       "MA20": 75.6,
       "MA60": 63.29
+    },
+    {
+      "Date": "2026-06-24",
+      "Open": 78.0,
+      "High": 85.7,
+      "Low": 77.2,
+      "Close": 85.7,
+      "Volume": 476043030,
+      "Amount": 39341921758,
+      "Change": 7.1,
+      "Transactions": 225273,
+      "MA5": 78.06,
+      "MA20": 76.35,
+      "MA60": 63.67
     }
   ]
 }
