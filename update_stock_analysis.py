@@ -4,6 +4,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.request
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
@@ -155,6 +156,8 @@ def fetch_twse_data(year, month, stock_code):
         print(f"TWSE returned non-OK status for {stock_code} {year}-{month:02d}: {data.get('stat')}")
     except Exception as e:
         print(f"TWSE fetch error for {stock_code} {year}-{month:02d}: {e}")
+    finally:
+        time.sleep(2)
     return [], "", "twse"
 
 
@@ -180,6 +183,8 @@ def fetch_tpex_data(year, month, stock_code):
                 return rows, title, "tpex"
         except Exception as e:
             print(f"TPEx fetch error for {stock_code} {year}-{month:02d}: {e}")
+        finally:
+            time.sleep(2)
     return [], "", "tpex"
 
 
@@ -274,12 +279,15 @@ def fetch_official_months(stock_code, market, months_to_fetch):
     rows = []
     title = ""
     source = ""
+    current_month_success = False
     for i in range(months_to_fetch):
         fetch_date = current_date - timedelta(days=30 * i)
         year, month = fetch_date.year, fetch_date.month
         if market in {"twse", "auto"}:
             month_rows, month_title, month_source = fetch_twse_data(year, month, stock_code)
             if month_rows:
+                if i == 0:
+                    current_month_success = True
                 rows.extend(month_rows)
                 title = title or month_title
                 source = month_source
@@ -287,9 +295,14 @@ def fetch_official_months(stock_code, market, months_to_fetch):
         if market in {"tpex", "auto"}:
             month_rows, month_title, month_source = fetch_tpex_data(year, month, stock_code)
             if month_rows:
+                if i == 0:
+                    current_month_success = True
                 rows.extend(month_rows)
                 title = title or month_title
                 source = month_source
+    if months_to_fetch > 0 and not current_month_success:
+        print(f"Official source failed to fetch current month's data for {stock_code}. Forcing Yahoo Finance fallback.")
+        return [], "", ""
     return rows, title, source
 
 
