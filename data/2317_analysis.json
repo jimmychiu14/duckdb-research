@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-06-24 23:33:44",
+  "updated_at": "2026-06-25 15:40:54",
   "summary": {
     "stock_code": "2317",
     "stock_name": "鴻海",
     "market": "twse",
     "data_source": "twse",
-    "start_date": "2026-06-17",
-    "end_date": "2026-06-24",
-    "avg_close": 264.9,
+    "start_date": "2026-06-18",
+    "end_date": "2026-06-25",
+    "avg_close": 262.0,
     "highest_price": 275.5,
     "lowest_price": 255.0,
-    "total_volume": 334652425,
-    "total_amount": 88877891429,
-    "last_close": 256.0,
-    "weekly_return_pct": -5.88
+    "total_volume": 334398677,
+    "total_amount": 88404380489,
+    "last_close": 257.5,
+    "weekly_return_pct": -4.1
   },
   "drawdown": {
-    "as_of_date": "2026-06-24",
-    "close": 256.0,
+    "as_of_date": "2026-06-25",
+    "close": 257.5,
     "historical_peak": 309.0,
-    "current_drawdown_pct": -17.15,
+    "current_drawdown_pct": -16.67,
     "max_historical_drawdown_pct": -23.94
   },
   "signal": {
     "status": "看差",
     "color": "green",
     "emoji": "🟢",
-    "desc": "空頭整理排列 (Close <= 5MA <= 20MA)。目前價格 TWD 256.0，5MA(264.9)、20MA(274.38)。"
+    "desc": "空頭整理排列 (Close <= 5MA <= 20MA)。目前價格 TWD 257.5，5MA(262.0)、20MA(274.05)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-03-27",
-      "Open": 197.0,
-      "High": 200.5,
-      "Low": 196.5,
-      "Close": 199.5,
-      "Volume": 29525374,
-      "Amount": 5852919796,
-      "Change": -1.0,
-      "Transactions": 33104,
-      "MA5": 198.2,
-      "MA20": 211.88,
-      "MA60": 216.7
-    },
     {
       "Date": "2026-03-30",
       "Open": 194.5,
@@ -868,6 +854,20 @@
       "MA5": 264.9,
       "MA20": 274.38,
       "MA60": 241.4
+    },
+    {
+      "Date": "2026-06-25",
+      "Open": 260.5,
+      "High": 262.5,
+      "Low": 257.5,
+      "Close": 257.5,
+      "Volume": 42501494,
+      "Amount": 11037260262,
+      "Change": 1.5,
+      "Transactions": 40015,
+      "MA5": 262.0,
+      "MA20": 274.05,
+      "MA60": 242.37
     }
   ]
 }

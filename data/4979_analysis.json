@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-06-24 23:33:32",
+  "updated_at": "2026-06-25 15:40:42",
   "summary": {
     "stock_code": "4979",
     "stock_name": "華星光",
     "market": "tpex",
     "data_source": "yahoo-two",
-    "start_date": "2026-06-17",
-    "end_date": "2026-06-24",
-    "avg_close": 538.0,
+    "start_date": "2026-06-18",
+    "end_date": "2026-06-25",
+    "avg_close": 523.9,
     "highest_price": 586.0,
-    "lowest_price": 499.0,
-    "total_volume": 33146706,
-    "total_amount": 17847860664,
-    "last_close": 500.0,
-    "weekly_return_pct": -8.42
+    "lowest_price": 475.0,
+    "total_volume": 34640578,
+    "total_amount": 18085622188,
+    "last_close": 475.5,
+    "weekly_return_pct": -16.14
   },
   "drawdown": {
-    "as_of_date": "2026-06-24",
-    "close": 500.0,
+    "as_of_date": "2026-06-25",
+    "close": 475.5,
     "historical_peak": 718.0,
-    "current_drawdown_pct": -30.36,
+    "current_drawdown_pct": -33.77,
     "max_historical_drawdown_pct": -34.12
   },
   "signal": {
     "status": "看差",
     "color": "green",
     "emoji": "🟢",
-    "desc": "空頭整理排列 (Close <= 5MA <= 20MA)。目前價格 TWD 500.0，5MA(538.0)、20MA(567.1)。"
+    "desc": "空頭整理排列 (Close <= 5MA <= 20MA)。目前價格 TWD 475.5，5MA(523.9)、20MA(559.48)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-03-27",
-      "Open": 379.0,
-      "High": 400.0,
-      "Low": 379.0,
-      "Close": 396.5,
-      "Volume": 1905990,
-      "Amount": 755725035,
-      "Change": -14.5,
-      "Transactions": 0,
-      "MA5": 400.0,
-      "MA20": 399.43,
-      "MA60": 341.18
-    },
     {
       "Date": "2026-03-30",
       "Open": 381.0,
@@ -861,13 +847,27 @@
       "High": 542.0,
       "Low": 499.0,
       "Close": 500.0,
-      "Volume": 7227681,
-      "Amount": 3613840500,
+      "Volume": 6988922,
+      "Amount": 3494461000,
       "Change": -25.0,
       "Transactions": 0,
       "MA5": 538.0,
       "MA20": 567.1,
       "MA60": 562.83
+    },
+    {
+      "Date": "2026-06-25",
+      "Open": 515.0,
+      "High": 515.0,
+      "Low": 475.0,
+      "Close": 475.5,
+      "Volume": 8352844,
+      "Amount": 3971777322,
+      "Change": -24.5,
+      "Transactions": 0,
+      "MA5": 523.9,
+      "MA20": 559.48,
+      "MA60": 564.15
     }
   ]
 }

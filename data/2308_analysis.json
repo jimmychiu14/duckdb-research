@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-06-24 23:33:49",
+  "updated_at": "2026-06-25 15:40:59",
   "summary": {
     "stock_code": "2308",
     "stock_name": "台達電",
     "market": "twse",
     "data_source": "twse",
-    "start_date": "2026-06-17",
-    "end_date": "2026-06-24",
-    "avg_close": 2107.0,
-    "highest_price": 2220.0,
-    "lowest_price": 1970.0,
-    "total_volume": 80065002,
-    "total_amount": 168457715542,
-    "last_close": 2000.0,
-    "weekly_return_pct": -7.19
+    "start_date": "2026-06-18",
+    "end_date": "2026-06-25",
+    "avg_close": 2072.0,
+    "highest_price": 2210.0,
+    "lowest_price": 1960.0,
+    "total_volume": 82127689,
+    "total_amount": 170530848097,
+    "last_close": 1980.0,
+    "weekly_return_pct": -7.91
   },
   "drawdown": {
-    "as_of_date": "2026-06-24",
-    "close": 2000.0,
+    "as_of_date": "2026-06-25",
+    "close": 1980.0,
     "historical_peak": 2520.0,
-    "current_drawdown_pct": -20.63,
-    "max_historical_drawdown_pct": -20.63
+    "current_drawdown_pct": -21.43,
+    "max_historical_drawdown_pct": -21.43
   },
   "signal": {
     "status": "看差",
     "color": "green",
     "emoji": "🟢",
-    "desc": "空頭整理排列 (Close <= 5MA <= 20MA)。目前價格 TWD 2000.0，5MA(2107.0)、20MA(2276.75)。"
+    "desc": "空頭整理排列 (Close <= 5MA <= 20MA)。目前價格 TWD 1980.0，5MA(2072.0)、20MA(2249.75)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-03-27",
-      "Open": 1460.0,
-      "High": 1520.0,
-      "Low": 1440.0,
-      "Close": 1510.0,
-      "Volume": 10527057,
-      "Amount": 15623578905,
-      "Change": -5.0,
-      "Transactions": 27606,
-      "MA5": 1480.0,
-      "MA20": 1396.75,
-      "MA60": 1344.53
-    },
     {
       "Date": "2026-03-30",
       "Open": 1480.0,
@@ -868,6 +854,20 @@
       "MA5": 2107.0,
       "MA20": 2276.75,
       "MA60": 2055.33
+    },
+    {
+      "Date": "2026-06-25",
+      "Open": 2060.0,
+      "High": 2060.0,
+      "Low": 1960.0,
+      "Close": 1980.0,
+      "Volume": 13676341,
+      "Amount": 27258959665,
+      "Change": -20.0,
+      "Transactions": 96806,
+      "MA5": 2072.0,
+      "MA20": 2249.75,
+      "MA60": 2063.17
     }
   ]
 }
