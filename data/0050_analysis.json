@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-06-25 15:40:50",
+  "updated_at": "2026-06-26 15:41:07",
   "summary": {
     "stock_code": "0050",
     "stock_name": "元大台灣50",
     "market": "twse",
     "data_source": "twse",
-    "start_date": "2026-06-18",
-    "end_date": "2026-06-25",
-    "avg_close": 108.58,
+    "start_date": "2026-06-22",
+    "end_date": "2026-06-26",
+    "avg_close": 107.74,
     "highest_price": 112.3,
-    "lowest_price": 106.15,
-    "total_volume": 657671750,
-    "total_amount": 71358920314,
-    "last_close": 107.2,
-    "weekly_return_pct": -0.09
+    "lowest_price": 102.8,
+    "total_volume": 870929062,
+    "total_amount": 93331558128,
+    "last_close": 103.1,
+    "weekly_return_pct": -7.24
   },
   "drawdown": {
-    "as_of_date": "2026-06-25",
-    "close": 107.2,
+    "as_of_date": "2026-06-26",
+    "close": 103.1,
     "historical_peak": 111.15,
-    "current_drawdown_pct": -3.55,
+    "current_drawdown_pct": -7.24,
     "max_historical_drawdown_pct": -10.84
   },
   "signal": {
     "status": "觀望",
     "color": "yellow",
     "emoji": "🟡",
-    "desc": "區間糾纏震盪 (5MA 與 20MA 糾結)。目前價格 TWD 107.2，5MA(108.58)、20MA(105.08)。"
+    "desc": "區間糾纏震盪 (5MA 與 20MA 糾結)。目前價格 TWD 103.1，5MA(107.74)、20MA(105.21)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-03-30",
-      "Open": 73.3,
-      "High": 74.05,
-      "Low": 72.8,
-      "Close": 73.9,
-      "Volume": 175515568,
-      "Amount": 12905676995,
-      "Change": -1.1,
-      "Transactions": 261697,
-      "MA5": 75.06,
-      "MA20": 75.98,
-      "MA60": 75.97
-    },
     {
       "Date": "2026-03-31",
       "Open": 73.35,
@@ -868,6 +854,20 @@
       "MA5": 108.58,
       "MA20": 105.08,
       "MA60": 94.42
+    },
+    {
+      "Date": "2026-06-26",
+      "Open": 105.4,
+      "High": 105.85,
+      "Low": 102.8,
+      "Close": 103.1,
+      "Volume": 291814760,
+      "Amount": 30384280200,
+      "Change": -4.1,
+      "Transactions": 602284,
+      "MA5": 107.74,
+      "MA20": 105.21,
+      "MA60": 94.91
     }
   ]
 }

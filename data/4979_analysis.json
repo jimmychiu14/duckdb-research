@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-06-25 15:40:42",
+  "updated_at": "2026-06-26 15:40:59",
   "summary": {
     "stock_code": "4979",
     "stock_name": "華星光",
     "market": "tpex",
     "data_source": "yahoo-two",
-    "start_date": "2026-06-18",
-    "end_date": "2026-06-25",
-    "avg_close": 523.9,
-    "highest_price": 586.0,
-    "lowest_price": 475.0,
-    "total_volume": 34640578,
-    "total_amount": 18085622188,
-    "last_close": 475.5,
-    "weekly_return_pct": -16.14
+    "start_date": "2026-06-22",
+    "end_date": "2026-06-26",
+    "avg_close": 502.3,
+    "highest_price": 585.0,
+    "lowest_price": 450.5,
+    "total_volume": 35823496,
+    "total_amount": 17819878767,
+    "last_close": 459.0,
+    "weekly_return_pct": -16.85
   },
   "drawdown": {
-    "as_of_date": "2026-06-25",
-    "close": 475.5,
+    "as_of_date": "2026-06-26",
+    "close": 459.0,
     "historical_peak": 718.0,
-    "current_drawdown_pct": -33.77,
-    "max_historical_drawdown_pct": -34.12
+    "current_drawdown_pct": -36.07,
+    "max_historical_drawdown_pct": -36.07
   },
   "signal": {
     "status": "看差",
     "color": "green",
     "emoji": "🟢",
-    "desc": "空頭整理排列 (Close <= 5MA <= 20MA)。目前價格 TWD 475.5，5MA(523.9)、20MA(559.48)。"
+    "desc": "空頭整理排列 (Close <= 5MA <= 20MA)。目前價格 TWD 459.0，5MA(502.3)、20MA(552.23)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-03-30",
-      "Open": 381.0,
-      "High": 381.5,
-      "Low": 370.0,
-      "Close": 379.0,
-      "Volume": 1921925,
-      "Amount": 728409575,
-      "Change": -17.5,
-      "Transactions": 0,
-      "MA5": 399.8,
-      "MA20": 395.25,
-      "MA60": 343.08
-    },
     {
       "Date": "2026-03-31",
       "Open": 374.0,
@@ -861,13 +847,27 @@
       "High": 515.0,
       "Low": 475.0,
       "Close": 475.5,
-      "Volume": 8352844,
-      "Amount": 3971777322,
+      "Volume": 8011101,
+      "Amount": 3809278526,
       "Change": -24.5,
       "Transactions": 0,
       "MA5": 523.9,
       "MA20": 559.48,
       "MA60": 564.15
+    },
+    {
+      "Date": "2026-06-26",
+      "Open": 473.0,
+      "High": 489.5,
+      "Low": 450.5,
+      "Close": 459.0,
+      "Volume": 8960439,
+      "Amount": 4112841501,
+      "Change": -16.5,
+      "Transactions": 0,
+      "MA5": 502.3,
+      "MA20": 552.23,
+      "MA60": 565.48
     }
   ]
 }
