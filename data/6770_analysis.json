@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-06-26 15:41:03",
+  "updated_at": "2026-06-29 15:41:00",
   "summary": {
     "stock_code": "6770",
     "stock_name": "力積電",
     "market": "twse",
     "data_source": "twse",
     "start_date": "2026-06-22",
-    "end_date": "2026-06-26",
-    "avg_close": 81.48,
+    "end_date": "2026-06-29",
+    "avg_close": 81.05,
     "highest_price": 89.3,
     "lowest_price": 77.2,
-    "total_volume": 1926798734,
-    "total_amount": 159760656592,
-    "last_close": 78.3,
-    "weekly_return_pct": -4.04
+    "total_volume": 2146962492,
+    "total_amount": 177300738191,
+    "last_close": 78.9,
+    "weekly_return_pct": 0.38
   },
   "drawdown": {
-    "as_of_date": "2026-06-26",
-    "close": 78.3,
+    "as_of_date": "2026-06-29",
+    "close": 78.9,
     "historical_peak": 88.7,
-    "current_drawdown_pct": -11.72,
+    "current_drawdown_pct": -11.05,
     "max_historical_drawdown_pct": -33.07
   },
   "signal": {
     "status": "觀望",
     "color": "yellow",
     "emoji": "🟡",
-    "desc": "區間糾纏震盪 (5MA 與 20MA 糾結)。目前價格 TWD 78.3，5MA(81.48)、20MA(76.65)。"
+    "desc": "區間糾纏震盪 (5MA 與 20MA 糾結)。目前價格 TWD 78.9，5MA(80.94)、20MA(76.16)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-03-31",
-      "Open": 55.0,
-      "High": 55.7,
-      "Low": 52.4,
-      "Close": 53.1,
-      "Volume": 207091698,
-      "Amount": 11133975327,
-      "Change": -5.0,
-      "Transactions": 101838,
-      "MA5": 59.64,
-      "MA20": 64.73,
-      "MA60": 65.8
-    },
     {
       "Date": "2026-04-01",
       "Open": 57.0,
@@ -868,6 +854,20 @@
       "MA5": 81.48,
       "MA20": 76.65,
       "MA60": 64.41
+    },
+    {
+      "Date": "2026-06-29",
+      "Open": 79.9,
+      "High": 82.3,
+      "Low": 77.6,
+      "Close": 78.9,
+      "Volume": 220163758,
+      "Amount": 17540081599,
+      "Change": 0.6,
+      "Transactions": 109218,
+      "MA5": 80.94,
+      "MA20": 76.16,
+      "MA60": 64.84
     }
   ]
 }
