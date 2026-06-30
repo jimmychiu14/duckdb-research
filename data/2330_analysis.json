@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-06-29 15:40:26",
+  "updated_at": "2026-06-30 15:41:04",
   "summary": {
     "stock_code": "2330",
     "stock_name": "台積電",
     "market": "twse",
     "data_source": "twse",
-    "start_date": "2026-06-22",
-    "end_date": "2026-06-29",
-    "avg_close": 2415.0,
+    "start_date": "2026-06-23",
+    "end_date": "2026-06-30",
+    "avg_close": 2398.33,
     "highest_price": 2535.0,
     "lowest_price": 2325.0,
-    "total_volume": 281777238,
-    "total_amount": 681655032154,
-    "last_close": 2370.0,
-    "weekly_return_pct": -4.82
+    "total_volume": 285052982,
+    "total_amount": 686736160119,
+    "last_close": 2410.0,
+    "weekly_return_pct": 0.84
   },
   "drawdown": {
-    "as_of_date": "2026-06-29",
-    "close": 2370.0,
+    "as_of_date": "2026-06-30",
+    "close": 2410.0,
     "historical_peak": 2510.0,
-    "current_drawdown_pct": -5.58,
+    "current_drawdown_pct": -3.98,
     "max_historical_drawdown_pct": -12.66
   },
   "signal": {
-    "status": "觀望",
-    "color": "yellow",
-    "emoji": "🟡",
-    "desc": "區間糾纏震盪 (5MA 與 20MA 糾結)。目前價格 TWD 2370.0，5MA(2396.0)、20MA(2369.25)。"
+    "status": "看好",
+    "color": "red",
+    "emoji": "🔴",
+    "desc": "多頭強勢排列 (Close >= 5MA >= 20MA)。目前價格 TWD 2410.0，5MA(2380.0)、20MA(2372.0)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-04-01",
-      "Open": 1840.0,
-      "High": 1855.0,
-      "Low": 1830.0,
-      "Close": 1855.0,
-      "Volume": 46457423,
-      "Amount": 85667372522,
-      "Change": 95.0,
-      "Transactions": 103263,
-      "MA5": 1811.0,
-      "MA20": 1848.5,
-      "MA60": 1860.71
-    },
     {
       "Date": "2026-04-02",
       "Open": 1865.0,
@@ -861,13 +847,27 @@
       "High": 2395.0,
       "Low": 2330.0,
       "Close": 2370.0,
-      "Volume": 34826682,
-      "Amount": 82497849495,
+      "Volume": 38133782,
+      "Amount": 90337385683,
       "Change": 30.0,
-      "Transactions": 93260,
+      "Transactions": 93276,
       "MA5": 2396.0,
       "MA20": 2369.25,
       "MA60": 2225.08
+    },
+    {
+      "Date": "2026-06-30",
+      "Open": 2440.0,
+      "High": 2475.0,
+      "Low": 2410.0,
+      "Close": 2410.0,
+      "Volume": 45176527,
+      "Amount": 109976674475,
+      "Change": 40.0,
+      "Transactions": 104564,
+      "MA5": 2380.0,
+      "MA20": 2372.0,
+      "MA60": 2234.33
     }
   ]
 }

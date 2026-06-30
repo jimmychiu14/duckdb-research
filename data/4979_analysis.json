@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-06-29 15:40:56",
+  "updated_at": "2026-06-30 15:41:13",
   "summary": {
     "stock_code": "4979",
     "stock_name": "華星光",
     "market": "tpex",
     "data_source": "yahoo-two",
-    "start_date": "2026-06-22",
-    "end_date": "2026-06-29",
-    "avg_close": 494.67,
-    "highest_price": 585.0,
+    "start_date": "2026-06-23",
+    "end_date": "2026-06-30",
+    "avg_close": 481.67,
+    "highest_price": 568.0,
     "lowest_price": 445.0,
-    "total_volume": 41770675,
-    "total_amount": 20534149383,
-    "last_close": 456.5,
-    "weekly_return_pct": -13.05
+    "total_volume": 40385901,
+    "total_amount": 19373914592,
+    "last_close": 474.0,
+    "weekly_return_pct": -5.2
   },
   "drawdown": {
-    "as_of_date": "2026-06-29",
-    "close": 456.5,
+    "as_of_date": "2026-06-30",
+    "close": 474.0,
     "historical_peak": 718.0,
-    "current_drawdown_pct": -36.42,
+    "current_drawdown_pct": -33.98,
     "max_historical_drawdown_pct": -36.42
   },
   "signal": {
-    "status": "看差",
-    "color": "green",
-    "emoji": "🟢",
-    "desc": "空頭整理排列 (Close <= 5MA <= 20MA)。目前價格 TWD 456.5，5MA(483.2)、20MA(543.85)。"
+    "status": "觀望",
+    "color": "yellow",
+    "emoji": "🟡",
+    "desc": "區間糾纏震盪 (5MA 與 20MA 糾結)。目前價格 TWD 474.0，5MA(473.0)、20MA(535.05)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-04-01",
-      "Open": 374.0,
-      "High": 375.5,
-      "Low": 368.0,
-      "Close": 375.5,
-      "Volume": 1240029,
-      "Amount": 465630890,
-      "Change": 34.0,
-      "Transactions": 0,
-      "MA5": 380.7,
-      "MA20": 386.95,
-      "MA60": 345.26
-    },
     {
       "Date": "2026-04-02",
       "Open": 393.0,
@@ -861,13 +847,27 @@
       "High": 472.5,
       "Low": 445.0,
       "Close": 456.5,
-      "Volume": 6193818,
-      "Amount": 2827477917,
+      "Volume": 6062644,
+      "Amount": 2767596986,
       "Change": -2.5,
       "Transactions": 0,
       "MA5": 483.2,
       "MA20": 543.85,
       "MA60": 567.4
+    },
+    {
+      "Date": "2026-06-30",
+      "Open": 470.5,
+      "High": 483.5,
+      "Low": 464.0,
+      "Close": 474.0,
+      "Volume": 5235470,
+      "Amount": 2481612780,
+      "Change": 17.5,
+      "Transactions": 0,
+      "MA5": 473.0,
+      "MA20": 535.05,
+      "MA60": 569.04
     }
   ]
 }
