@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-06-30 15:41:26",
+  "updated_at": "2026-07-01 15:40:50",
   "summary": {
     "stock_code": "2317",
     "stock_name": "鴻海",
     "market": "twse",
     "data_source": "twse",
-    "start_date": "2026-06-23",
-    "end_date": "2026-06-30",
-    "avg_close": 253.17,
-    "highest_price": 270.5,
+    "start_date": "2026-06-24",
+    "end_date": "2026-07-01",
+    "avg_close": 251.25,
+    "highest_price": 262.5,
     "lowest_price": 246.0,
-    "total_volume": 381201278,
-    "total_amount": 97514570838,
-    "last_close": 251.0,
-    "weekly_return_pct": -1.95
+    "total_volume": 355763095,
+    "total_amount": 90004675685,
+    "last_close": 248.0,
+    "weekly_return_pct": -3.69
   },
   "drawdown": {
-    "as_of_date": "2026-06-30",
-    "close": 251.0,
+    "as_of_date": "2026-07-01",
+    "close": 248.0,
     "historical_peak": 309.0,
-    "current_drawdown_pct": -18.77,
+    "current_drawdown_pct": -19.74,
     "max_historical_drawdown_pct": -23.94
   },
   "signal": {
     "status": "看差",
     "color": "green",
     "emoji": "🟢",
-    "desc": "空頭整理排列 (Close <= 5MA <= 20MA)。目前價格 TWD 251.0，5MA(251.9)、20MA(269.08)。"
+    "desc": "空頭整理排列 (Close <= 5MA <= 20MA)。目前價格 TWD 248.0，5MA(250.3)、20MA(266.4)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-04-02",
-      "Open": 198.0,
-      "High": 199.0,
-      "Low": 191.5,
-      "Close": 193.0,
-      "Volume": 41954568,
-      "Amount": 8143562865,
-      "Change": -4.0,
-      "Transactions": 41669,
-      "MA5": 194.2,
-      "MA20": 205.0,
-      "MA60": 214.06
-    },
     {
       "Date": "2026-04-07",
       "Open": 195.0,
@@ -861,13 +847,27 @@
       "High": 255.5,
       "Low": 249.0,
       "Close": 251.0,
-      "Volume": 52207173,
-      "Amount": 13179231688,
+      "Volume": 52952173,
+      "Amount": 13366226688,
       "Change": 4.5,
-      "Transactions": 39120,
+      "Transactions": 39123,
       "MA5": 251.9,
       "MA20": 269.08,
       "MA60": 245.16
+    },
+    {
+      "Date": "2026-07-01",
+      "Open": 255.0,
+      "High": 255.5,
+      "Low": 248.0,
+      "Close": 248.0,
+      "Volume": 65880617,
+      "Amount": 16492926865,
+      "Change": -3.0,
+      "Transactions": 70335,
+      "MA5": 250.3,
+      "MA20": 266.4,
+      "MA60": 246.08
     }
   ]
 }

@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-06-30 15:41:22",
+  "updated_at": "2026-07-01 15:40:46",
   "summary": {
     "stock_code": "0050",
     "stock_name": "元大台灣50",
     "market": "twse",
     "data_source": "twse",
-    "start_date": "2026-06-23",
-    "end_date": "2026-06-30",
-    "avg_close": 106.63,
-    "highest_price": 112.3,
+    "start_date": "2026-06-24",
+    "end_date": "2026-07-01",
+    "avg_close": 106.51,
+    "highest_price": 109.95,
     "lowest_price": 102.8,
-    "total_volume": 969252479,
-    "total_amount": 103225492709,
-    "last_close": 107.8,
-    "weekly_return_pct": 0.61
+    "total_volume": 914597147,
+    "total_amount": 97035179763,
+    "last_close": 109.35,
+    "weekly_return_pct": 2.01
   },
   "drawdown": {
-    "as_of_date": "2026-06-30",
-    "close": 107.8,
+    "as_of_date": "2026-07-01",
+    "close": 109.35,
     "historical_peak": 111.15,
-    "current_drawdown_pct": -3.01,
+    "current_drawdown_pct": -1.62,
     "max_historical_drawdown_pct": -10.84
   },
   "signal": {
     "status": "看好",
     "color": "red",
     "emoji": "🔴",
-    "desc": "多頭強勢排列 (Close >= 5MA >= 20MA)。目前價格 TWD 107.8，5MA(105.94)、20MA(105.27)。"
+    "desc": "多頭強勢排列 (Close >= 5MA >= 20MA)。目前價格 TWD 109.35，5MA(106.38)、20MA(105.46)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-04-02",
-      "Open": 75.9,
-      "High": 76.05,
-      "Low": 73.8,
-      "Close": 73.95,
-      "Volume": 105707506,
-      "Amount": 7817069746,
-      "Change": -1.5,
-      "Transactions": 0,
-      "MA5": 74.13,
-      "MA20": 75.48,
-      "MA60": 73.71
-    },
     {
       "Date": "2026-04-07",
       "Open": 75.15,
@@ -868,6 +854,20 @@
       "MA5": 105.94,
       "MA20": 105.27,
       "MA60": 95.98
+    },
+    {
+      "Date": "2026-07-01",
+      "Open": 109.8,
+      "High": 109.95,
+      "Low": 108.6,
+      "Close": 109.35,
+      "Volume": 76131395,
+      "Amount": 8327320323,
+      "Change": 1.55,
+      "Transactions": 86153,
+      "MA5": 106.38,
+      "MA20": 105.46,
+      "MA60": 96.57
     }
   ]
 }
