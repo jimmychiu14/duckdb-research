@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-07-01 15:40:46",
+  "updated_at": "2026-07-02 15:40:26",
   "summary": {
     "stock_code": "0050",
     "stock_name": "元大台灣50",
     "market": "twse",
     "data_source": "twse",
-    "start_date": "2026-06-24",
-    "end_date": "2026-07-01",
-    "avg_close": 106.51,
+    "start_date": "2026-06-25",
+    "end_date": "2026-07-02",
+    "avg_close": 106.78,
     "highest_price": 109.95,
     "lowest_price": 102.8,
-    "total_volume": 914597147,
-    "total_amount": 97035179763,
-    "last_close": 109.35,
-    "weekly_return_pct": 2.01
+    "total_volume": 752078565,
+    "total_amount": 79708519420,
+    "last_close": 108.8,
+    "weekly_return_pct": 5.53
   },
   "drawdown": {
-    "as_of_date": "2026-07-01",
-    "close": 109.35,
+    "as_of_date": "2026-07-02",
+    "close": 108.8,
     "historical_peak": 111.15,
-    "current_drawdown_pct": -1.62,
+    "current_drawdown_pct": -2.11,
     "max_historical_drawdown_pct": -10.84
   },
   "signal": {
     "status": "看好",
     "color": "red",
     "emoji": "🔴",
-    "desc": "多頭強勢排列 (Close >= 5MA >= 20MA)。目前價格 TWD 109.35，5MA(106.38)、20MA(105.46)。"
+    "desc": "多頭強勢排列 (Close >= 5MA >= 20MA)。目前價格 TWD 108.8，5MA(106.7)、20MA(105.52)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-04-07",
-      "Open": 75.15,
-      "High": 75.45,
-      "Low": 74.65,
-      "Close": 75.3,
-      "Volume": 76885542,
-      "Amount": 5789481547,
-      "Change": 1.35,
-      "Transactions": 0,
-      "MA5": 74.19,
-      "MA20": 75.41,
-      "MA60": 73.88
-    },
     {
       "Date": "2026-04-08",
       "Open": 78.1,
@@ -868,6 +854,20 @@
       "MA5": 106.38,
       "MA20": 105.46,
       "MA60": 96.57
+    },
+    {
+      "Date": "2026-07-02",
+      "Open": 107.2,
+      "High": 108.95,
+      "Low": 106.9,
+      "Close": 108.8,
+      "Volume": 73421155,
+      "Amount": 7929812970,
+      "Change": -0.55,
+      "Transactions": 108165,
+      "MA5": 106.7,
+      "MA20": 105.52,
+      "MA60": 97.13
     }
   ]
 }

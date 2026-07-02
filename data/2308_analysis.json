@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-07-01 15:40:54",
+  "updated_at": "2026-07-02 15:40:35",
   "summary": {
     "stock_code": "2308",
     "stock_name": "台達電",
     "market": "twse",
     "data_source": "twse",
-    "start_date": "2026-06-24",
-    "end_date": "2026-07-01",
-    "avg_close": 1939.17,
+    "start_date": "2026-06-25",
+    "end_date": "2026-07-02",
+    "avg_close": 1934.17,
     "highest_price": 2060.0,
     "lowest_price": 1790.0,
-    "total_volume": 106029442,
-    "total_amount": 206065761158,
-    "last_close": 1990.0,
-    "weekly_return_pct": 0.51
+    "total_volume": 89126990,
+    "total_amount": 172202457226,
+    "last_close": 1970.0,
+    "weekly_return_pct": 8.84
   },
   "drawdown": {
-    "as_of_date": "2026-07-01",
-    "close": 1990.0,
+    "as_of_date": "2026-07-02",
+    "close": 1970.0,
     "historical_peak": 2520.0,
-    "current_drawdown_pct": -21.03,
+    "current_drawdown_pct": -21.83,
     "max_historical_drawdown_pct": -28.17
   },
   "signal": {
     "status": "觀望",
     "color": "yellow",
     "emoji": "🟡",
-    "desc": "區間糾纏震盪 (5MA 與 20MA 糾結)。目前價格 TWD 1990.0，5MA(1927.0)、20MA(2151.75)。"
+    "desc": "區間糾纏震盪 (5MA 與 20MA 糾結)。目前價格 TWD 1970.0，5MA(1925.0)、20MA(2127.5)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-04-07",
-      "Open": 1495.0,
-      "High": 1515.0,
-      "Low": 1490.0,
-      "Close": 1515.0,
-      "Volume": 11190572,
-      "Amount": 16839523816,
-      "Change": 85.0,
-      "Transactions": 25396,
-      "MA5": 1457.0,
-      "MA20": 1427.25,
-      "MA60": 1359.73
-    },
     {
       "Date": "2026-04-08",
       "Open": 1630.0,
@@ -861,13 +847,27 @@
       "High": 2020.0,
       "Low": 1965.0,
       "Close": 1990.0,
-      "Volume": 8678015,
-      "Amount": 17378389380,
+      "Volume": 8753015,
+      "Amount": 17529889380,
       "Change": 40.0,
-      "Transactions": 41078,
+      "Transactions": 41079,
       "MA5": 1927.0,
       "MA20": 2151.75,
       "MA60": 2094.58
+    },
+    {
+      "Date": "2026-07-02",
+      "Open": 1955.0,
+      "High": 2010.0,
+      "Low": 1920.0,
+      "Close": 1970.0,
+      "Volume": 6929618,
+      "Amount": 13720870390,
+      "Change": -20.0,
+      "Transactions": 39559,
+      "MA5": 1925.0,
+      "MA20": 2127.5,
+      "MA60": 2102.17
     }
   ]
 }
