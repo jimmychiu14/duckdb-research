@@ -1,48 +1,34 @@
 {
-  "updated_at": "2026-07-02 15:40:31",
+  "updated_at": "2026-07-03 15:40:37",
   "summary": {
     "stock_code": "2317",
     "stock_name": "鴻海",
     "market": "twse",
     "data_source": "twse",
-    "start_date": "2026-06-25",
-    "end_date": "2026-07-02",
-    "avg_close": 248.42,
-    "highest_price": 262.5,
-    "lowest_price": 238.0,
-    "total_volume": 359484686,
-    "total_amount": 89803270811,
-    "last_close": 239.0,
-    "weekly_return_pct": -3.82
+    "start_date": "2026-06-26",
+    "end_date": "2026-07-03",
+    "avg_close": 245.58,
+    "highest_price": 255.5,
+    "lowest_price": 236.0,
+    "total_volume": 366916434,
+    "total_amount": 90667965020,
+    "last_close": 240.5,
+    "weekly_return_pct": -2.43
   },
   "drawdown": {
-    "as_of_date": "2026-07-02",
-    "close": 239.0,
+    "as_of_date": "2026-07-03",
+    "close": 240.5,
     "historical_peak": 309.0,
-    "current_drawdown_pct": -22.65,
+    "current_drawdown_pct": -22.17,
     "max_historical_drawdown_pct": -23.94
   },
   "signal": {
     "status": "看差",
     "color": "green",
     "emoji": "🟢",
-    "desc": "空頭整理排列 (Close <= 5MA <= 20MA)。目前價格 TWD 239.0，5MA(246.6)、20MA(262.9)。"
+    "desc": "空頭整理排列 (Close <= 5MA <= 20MA)。目前價格 TWD 240.5，5MA(245.0)、20MA(260.27)。"
   },
   "chart_data": [
-    {
-      "Date": "2026-04-08",
-      "Open": 196.5,
-      "High": 202.0,
-      "Low": 196.5,
-      "Close": 201.5,
-      "Volume": 66909375,
-      "Amount": 13389666314,
-      "Change": 9.5,
-      "Transactions": 49201,
-      "MA5": 194.2,
-      "MA20": 203.0,
-      "MA60": 213.14
-    },
     {
       "Date": "2026-04-09",
       "Open": 201.0,
@@ -861,13 +847,27 @@
       "High": 243.0,
       "Low": 238.0,
       "Close": 239.0,
-      "Volume": 67412136,
-      "Amount": 16178710741,
+      "Volume": 67897136,
+      "Amount": 16295091341,
       "Change": 0.0,
-      "Transactions": 78739,
+      "Transactions": 78740,
       "MA5": 246.6,
       "MA20": 262.9,
       "MA60": 246.86
+    },
+    {
+      "Date": "2026-07-03",
+      "Open": 237.0,
+      "High": 241.0,
+      "Low": 236.0,
+      "Close": 240.5,
+      "Volume": 50525242,
+      "Amount": 12074254057,
+      "Change": 1.5,
+      "Transactions": 49830,
+      "MA5": 245.0,
+      "MA20": 260.27,
+      "MA60": 247.51
     }
   ]
 }
