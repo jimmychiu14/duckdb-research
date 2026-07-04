@@ -306,6 +306,263 @@ def fetch_official_months(stock_code, market, months_to_fetch):
     return rows, title, source
 
 
+# ─── Technical Indicator Functions (pure Python, no extra deps) ───
+
+
+def compute_sma(values, period):
+    """Simple Moving Average — returns list with None for warmup period."""
+    result = [None] * len(values)
+    for i in range(period - 1, len(values)):
+        result[i] = round(sum(values[i - period + 1 : i + 1]) / period, 2)
+    return result
+
+
+def compute_ema(values, period):
+    """Exponential Moving Average — seeded with SMA."""
+    result = [None] * len(values)
+    if len(values) < period:
+        return result
+    k = 2 / (period + 1)
+    seed = sum(values[:period]) / period
+    result[period - 1] = round(seed, 4)
+    for i in range(period, len(values)):
+        result[i] = round(values[i] * k + result[i - 1] * (1 - k), 4)
+    return result
+
+
+def compute_rsi(closes, period=14):
+    """Relative Strength Index (Wilder's smoothing)."""
+    result = [None] * len(closes)
+    if len(closes) < period + 1:
+        return result
+    gains, losses = [], []
+    for i in range(1, period + 1):
+        diff = closes[i] - closes[i - 1]
+        gains.append(max(diff, 0))
+        losses.append(max(-diff, 0))
+    avg_gain = sum(gains) / period
+    avg_loss = sum(losses) / period
+    if avg_loss == 0:
+        result[period] = 100.0
+    else:
+        rs = avg_gain / avg_loss
+        result[period] = round(100 - 100 / (1 + rs), 2)
+    for i in range(period + 1, len(closes)):
+        diff = closes[i] - closes[i - 1]
+        gain = max(diff, 0)
+        loss = max(-diff, 0)
+        avg_gain = (avg_gain * (period - 1) + gain) / period
+        avg_loss = (avg_loss * (period - 1) + loss) / period
+        if avg_loss == 0:
+            result[i] = 100.0
+        else:
+            rs = avg_gain / avg_loss
+            result[i] = round(100 - 100 / (1 + rs), 2)
+    return result
+
+
+def compute_macd(closes, fast=12, slow=26, signal=9):
+    """MACD: returns (dif, macd_signal, osc_histogram)."""
+    ema_fast = compute_ema(closes, fast)
+    ema_slow = compute_ema(closes, slow)
+    dif = [None] * len(closes)
+    for i in range(len(closes)):
+        if ema_fast[i] is not None and ema_slow[i] is not None:
+            dif[i] = round(ema_fast[i] - ema_slow[i], 4)
+    first_valid = next((i for i, v in enumerate(dif) if v is not None), None)
+    macd_line = [None] * len(closes)
+    if first_valid is not None:
+        signal_ema = compute_ema(dif[first_valid:], signal)
+        for i, v in enumerate(signal_ema):
+            if v is not None:
+                macd_line[first_valid + i] = v
+    osc = [None] * len(closes)
+    for i in range(len(closes)):
+        if dif[i] is not None and macd_line[i] is not None:
+            osc[i] = round(dif[i] - macd_line[i], 4)
+    return dif, macd_line, osc
+
+
+def compute_kd(highs, lows, closes, period=9):
+    """Stochastic Oscillator K & D (seeded at 50)."""
+    k_vals = [None] * len(closes)
+    d_vals = [None] * len(closes)
+    if len(closes) < period:
+        return k_vals, d_vals
+    rsv = [None] * len(closes)
+    for i in range(period - 1, len(closes)):
+        hh = max(highs[i - period + 1 : i + 1])
+        ll = min(lows[i - period + 1 : i + 1])
+        rsv[i] = 50.0 if hh == ll else (closes[i] - ll) / (hh - ll) * 100
+    prev_k, prev_d = 50.0, 50.0
+    for i in range(len(closes)):
+        if rsv[i] is not None:
+            k = 2 / 3 * prev_k + 1 / 3 * rsv[i]
+            d = 2 / 3 * prev_d + 1 / 3 * k
+            k_vals[i] = round(k, 2)
+            d_vals[i] = round(d, 2)
+            prev_k, prev_d = k, d
+    return k_vals, d_vals
+
+
+def compute_atr(highs, lows, closes, period=14):
+    """Average True Range (Wilder's smoothing)."""
+    result = [None] * len(closes)
+    if len(closes) < period + 1:
+        return result
+    trs = [0.0] * len(closes)
+    for i in range(1, len(closes)):
+        trs[i] = max(
+            highs[i] - lows[i],
+            abs(highs[i] - closes[i - 1]),
+            abs(lows[i] - closes[i - 1]),
+        )
+    first_atr = sum(trs[1 : period + 1]) / period
+    result[period] = round(first_atr, 4)
+    for i in range(period + 1, len(closes)):
+        atr = (result[i - 1] * (period - 1) + trs[i]) / period
+        result[i] = round(atr, 4)
+    return result
+
+
+def compute_bollinger(closes, period=20, num_std=2):
+    """Bollinger Bands: returns (upper, middle, lower)."""
+    upper = [None] * len(closes)
+    middle = [None] * len(closes)
+    lower = [None] * len(closes)
+    if len(closes) < period:
+        return upper, middle, lower
+    for i in range(period - 1, len(closes)):
+        window = closes[i - period + 1 : i + 1]
+        mean = sum(window) / period
+        variance = sum((x - mean) ** 2 for x in window) / period
+        std = variance ** 0.5
+        middle[i] = round(mean, 2)
+        upper[i] = round(mean + num_std * std, 2)
+        lower[i] = round(mean - num_std * std, 2)
+    return upper, middle, lower
+
+
+def compute_volume_ma(volumes, period):
+    """Volume Moving Average."""
+    result = [None] * len(volumes)
+    for i in range(period - 1, len(volumes)):
+        result[i] = int(sum(volumes[i - period + 1 : i + 1]) / period)
+    return result
+
+
+def enrich_chart_data(chart_data):
+    """Add per-day technical indicators to chart_data in-place."""
+    closes = [float(d["Close"]) for d in chart_data]
+    highs = [float(d["High"]) for d in chart_data]
+    lows = [float(d["Low"]) for d in chart_data]
+    volumes = [int(d["Volume"]) for d in chart_data]
+
+    rsi = compute_rsi(closes, 14)
+    dif, macd_line, osc = compute_macd(closes)
+    k_vals, d_vals = compute_kd(highs, lows, closes)
+    atr = compute_atr(highs, lows, closes)
+    bb_upper, bb_mid, bb_lower = compute_bollinger(closes)
+    vol_ma5 = compute_volume_ma(volumes, 5)
+    vol_ma20 = compute_volume_ma(volumes, 20)
+
+    for i, d in enumerate(chart_data):
+        d["RSI"] = rsi[i]
+        d["DIF"] = dif[i]
+        d["MACD"] = macd_line[i]
+        d["OSC"] = osc[i]
+        d["K"] = k_vals[i]
+        d["D"] = d_vals[i]
+        d["ATR"] = atr[i]
+        d["BB_Upper"] = bb_upper[i]
+        d["BB_Middle"] = bb_mid[i]
+        d["BB_Lower"] = bb_lower[i]
+        d["Vol_MA5"] = vol_ma5[i]
+        d["Vol_MA20"] = vol_ma20[i]
+    return chart_data
+
+
+def compute_extended_metrics(sorted_rows, chart_data):
+    """Compute summary-level metrics from full history."""
+    closes = [float(r["Close"]) for r in sorted_rows]
+    highs = [float(r["High"]) for r in sorted_rows]
+    lows = [float(r["Low"]) for r in sorted_rows]
+    volumes = [int(r["Volume"]) for r in sorted_rows]
+    amounts = [int(r["Amount"]) for r in sorted_rows]
+    n = len(closes)
+    last_close = closes[-1] if n else 0.0
+
+    # Monthly return (~21 trading days)
+    monthly_return = round((last_close - closes[-22]) / closes[-22] * 100, 2) if n >= 22 else 0.0
+    # Quarterly return (~63 trading days)
+    quarterly_return = round((last_close - closes[-64]) / closes[-64] * 100, 2) if n >= 64 else 0.0
+
+    # Annualized volatility
+    daily_returns = [
+        (closes[i] - closes[i - 1]) / closes[i - 1]
+        for i in range(1, n)
+        if closes[i - 1] != 0
+    ]
+    volatility = 0.0
+    if len(daily_returns) >= 2:
+        mean_ret = sum(daily_returns) / len(daily_returns)
+        variance = sum((r - mean_ret) ** 2 for r in daily_returns) / (len(daily_returns) - 1)
+        volatility = round(variance ** 0.5 * (252 ** 0.5) * 100, 2)
+
+    # 52-week high/low (~252 trading days)
+    lookback = min(252, n)
+    week_52_high = max(highs[-lookback:]) if lookback else last_close
+    week_52_low = min(lows[-lookback:]) if lookback else last_close
+    pct_from_high = round((last_close - week_52_high) / week_52_high * 100, 2) if week_52_high else 0.0
+    pct_from_low = round((last_close - week_52_low) / week_52_low * 100, 2) if week_52_low else 0.0
+
+    # VWAP (full history)
+    total_volume = sum(volumes)
+    vwap = round(sum(amounts) / total_volume, 2) if total_volume > 0 else 0.0
+
+    # Max consecutive up/down days
+    max_up = max_down = cur_up = cur_down = 0
+    for i in range(1, n):
+        if closes[i] > closes[i - 1]:
+            cur_up += 1; cur_down = 0; max_up = max(max_up, cur_up)
+        elif closes[i] < closes[i - 1]:
+            cur_down += 1; cur_up = 0; max_down = max(max_down, cur_down)
+        else:
+            cur_up = cur_down = 0
+
+    # Support/Resistance (recent 60 days)
+    recent_lb = min(60, n)
+    resistance = max(highs[-recent_lb:]) if recent_lb else last_close
+    support = min(lows[-recent_lb:]) if recent_lb else last_close
+
+    # Volume-price divergence (recent 5 days vs prior 5 days)
+    divergence = {"status": "無", "desc": "近期量價同步。"}
+    if n >= 6:
+        price_up = closes[-1] > closes[-6]
+        recent_vol_avg = sum(volumes[-5:]) / 5
+        prior_vol_avg = (sum(volumes[-10:-5]) / 5) if n >= 10 else (sum(volumes[:max(1, n - 5)]) / max(1, n - 5))
+        if price_up and prior_vol_avg > 0 and recent_vol_avg < prior_vol_avg * 0.8:
+            divergence = {"status": "價漲量縮", "desc": "近5日價格上漲但量能萎縮，可能反彈乏力。"}
+        elif not price_up and prior_vol_avg > 0 and recent_vol_avg > prior_vol_avg * 1.2:
+            divergence = {"status": "價跌量增", "desc": "近5日價格下跌但量能擴大，可能恐慌性賣壓。"}
+
+    return {
+        "monthly_return_pct": monthly_return,
+        "quarterly_return_pct": quarterly_return,
+        "annualized_volatility_pct": volatility,
+        "week_52_high": week_52_high,
+        "week_52_low": week_52_low,
+        "pct_from_52_high": pct_from_high,
+        "pct_from_52_low": pct_from_low,
+        "vwap": vwap,
+        "max_consecutive_up_days": max_up,
+        "max_consecutive_down_days": max_down,
+        "support_level": support,
+        "resistance_level": resistance,
+        "volume_price_divergence": divergence,
+    }
+
+
 def analyze_stock(target):
     print(f"=== Starting Stock Analysis Pipeline for {target.code} {target.name} @{target.market} ===")
     csv_path = os.path.join(DATA_DIR, f"{target.code}_daily_history.csv")
@@ -356,6 +613,9 @@ def analyze_stock(target):
     chart_data = [dict(zip(cols, row)) for row in reversed(ma_results)]
     if not chart_data:
         raise RuntimeError(f"No chart data generated for {target.code}.")
+
+    # Enrich chart_data with technical indicators (RSI, MACD, KD, ATR, Bollinger, Volume MA)
+    enrich_chart_data(chart_data)
 
     mdd_sql = f"""
     WITH peak_calc AS (
@@ -440,11 +700,16 @@ def analyze_stock(target):
         "desc": f"{trend_desc}。目前價格 TWD {c_val}，5MA({ma5_val})、20MA({ma20_val})。"
     }
 
+    # Extended metrics (monthly/quarterly return, volatility, 52-week, VWAP, etc.)
+    sorted_rows = [existing_data[d] for d in sorted_dates]
+    extended_metrics = compute_extended_metrics(sorted_rows, chart_data)
+
     analysis_payload = {
         "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "summary": weekly_summary,
         "drawdown": drawdown_info,
         "signal": signal_info,
+        "extended_metrics": extended_metrics,
         "chart_data": chart_data,
     }
     with open(json_path, "w", encoding="utf-8") as f:

@@ -164,6 +164,148 @@
 
     </div>
 
+    <!-- Technical Indicators Panel -->
+    <section class="mb-8">
+      <h2 class="text-xl font-black text-white mb-4 tracking-tight">📊 技術指標面板</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <!-- RSI -->
+        <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-5 rounded-2xl border border-slate-800 shadow-xl">
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">RSI (14日)</span>
+          <div class="flex items-baseline gap-2 mt-2">
+            <span id="ti-rsi" class="text-3xl font-extrabold text-white">—</span>
+            <span id="ti-rsi-label" class="text-xs font-bold text-gray-400">—</span>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">超買 &gt;70 / 超賣 &lt;30</p>
+        </div>
+        <!-- MACD -->
+        <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-5 rounded-2xl border border-slate-800 shadow-xl">
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">MACD</span>
+          <div class="mt-2 space-y-1 text-sm">
+            <div class="flex justify-between"><span class="text-gray-400">DIF</span><span id="ti-dif" class="font-bold text-white">—</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">MACD</span><span id="ti-macd" class="font-bold text-blue-300">—</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">柱狀</span><span id="ti-osc" class="font-bold">—</span></div>
+          </div>
+        </div>
+        <!-- KD -->
+        <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-5 rounded-2xl border border-slate-800 shadow-xl">
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">KD (9日)</span>
+          <div class="mt-2 space-y-1 text-sm">
+            <div class="flex justify-between"><span class="text-gray-400">K 值</span><span id="ti-k" class="font-bold text-white">—</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">D 值</span><span id="ti-d" class="font-bold text-purple-300">—</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">交叉</span><span id="ti-kd-cross" class="font-bold text-xs">—</span></div>
+          </div>
+        </div>
+        <!-- ATR -->
+        <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-5 rounded-2xl border border-slate-800 shadow-xl">
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">ATR (14日)</span>
+          <span id="ti-atr" class="text-3xl font-extrabold text-white block mt-2">—</span>
+          <p class="text-xs text-gray-500 mt-2">日內波動幅度均值</p>
+        </div>
+        <!-- Bollinger -->
+        <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-5 rounded-2xl border border-slate-800 shadow-xl">
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">布林通道 (20,2)</span>
+          <div class="mt-2 space-y-1 text-sm">
+            <div class="flex justify-between"><span class="text-red-400">上軌</span><span id="ti-bb-upper" class="font-bold text-white">—</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">中軌</span><span id="ti-bb-mid" class="font-bold text-gray-300">—</span></div>
+            <div class="flex justify-between"><span class="text-emerald-400">下軌</span><span id="ti-bb-lower" class="font-bold text-white">—</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSI Sub-chart -->
+    <section class="mb-8 bg-slate-900/60 p-6 rounded-3xl border border-slate-800 shadow-xl">
+      <h2 class="text-lg font-bold text-white mb-4">RSI 相對強弱指標</h2>
+      <div class="relative h-48 w-full">
+        <canvas id="rsiChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Risk & Return Panel -->
+    <section class="mb-8">
+      <h2 class="text-xl font-black text-white mb-4 tracking-tight">⚖️ 風險與報酬分析</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Returns -->
+        <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-5 rounded-2xl border border-slate-800 shadow-xl">
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">期間報酬率</span>
+          <div class="mt-3 space-y-2 text-sm">
+            <div class="flex justify-between border-b border-gray-800/60 pb-2">
+              <span class="text-gray-400">月報酬</span>
+              <span id="rr-monthly" class="font-bold text-lg">—</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-400">季報酬</span>
+              <span id="rr-quarterly" class="font-bold text-lg">—</span>
+            </div>
+          </div>
+        </div>
+        <!-- Volatility -->
+        <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-5 rounded-2xl border border-slate-800 shadow-xl">
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">年化波動率</span>
+          <span id="rr-volatility" class="text-3xl font-extrabold text-orange-400 block mt-2">—</span>
+          <p class="text-xs text-gray-500 mt-2">日報酬率標準差 × √252</p>
+        </div>
+        <!-- 52-Week Range -->
+        <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-5 rounded-2xl border border-slate-800 shadow-xl">
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">52 週區間</span>
+          <div class="mt-3 space-y-1 text-sm">
+            <div class="flex justify-between border-b border-gray-800/60 pb-2">
+              <span class="text-red-400">最高</span>
+              <span id="rr-52-high" class="font-bold text-white">—</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-800/60 pb-2">
+              <span class="text-emerald-400">最低</span>
+              <span id="rr-52-low" class="font-bold text-white">—</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-400">距高點</span>
+              <span id="rr-pct-high" class="font-bold text-orange-400">—</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-400">距低點</span>
+              <span id="rr-pct-low" class="font-bold text-emerald-400">—</span>
+            </div>
+          </div>
+        </div>
+        <!-- VWAP & Streaks -->
+        <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-5 rounded-2xl border border-slate-800 shadow-xl">
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">VWAP & 連漲跌</span>
+          <div class="mt-3 space-y-1 text-sm">
+            <div class="flex justify-between border-b border-gray-800/60 pb-2">
+              <span class="text-gray-400">VWAP</span>
+              <span id="rr-vwap" class="font-bold text-cyan-300">—</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-800/60 pb-2">
+              <span class="text-red-400">最大連漲</span>
+              <span id="rr-max-up" class="font-bold text-white">—</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-emerald-400">最大連跌</span>
+              <span id="rr-max-down" class="font-bold text-white">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Support/Resistance & Divergence row -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+        <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 shadow-xl">
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">支撐位 (近60日)</span>
+          <span id="rr-support" class="text-2xl font-extrabold text-emerald-400 block mt-2">—</span>
+        </div>
+        <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 shadow-xl">
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">壓力位 (近60日)</span>
+          <span id="rr-resistance" class="text-2xl font-extrabold text-red-400 block mt-2">—</span>
+        </div>
+        <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 shadow-xl">
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block">量價背離警示</span>
+          <div class="mt-2">
+            <span id="rr-div-status" class="text-lg font-bold block">—</span>
+            <p id="rr-div-desc" class="text-xs text-gray-500 mt-1">—</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SWOT Analysis Section (Jimmy's Favorite) -->
     <section class="mb-8">
       <h2 id="swot-title" class="text-2xl font-black text-white mb-6 tracking-tight">台積電 (2330) 深度 SWOT 多空對決分析</h2>
@@ -220,9 +362,14 @@
               <th class="p-4 text-right">最高價</th>
               <th class="p-4 text-right">最低價</th>
               <th class="p-4 text-right text-white">收盤價</th>
-              <th class="p-4 text-right">漲跌價差</th>
-              <th class="p-4 text-right">日成交股數</th>
-              <th class="p-4 text-right">成交金額 (億)</th>
+              <th class="p-4 text-right">漲跌</th>
+              <th class="p-4 text-right">成交量</th>
+              <th class="p-4 text-right">金額(億)</th>
+              <th class="p-4 text-right text-purple-300">RSI</th>
+              <th class="p-4 text-right text-purple-300">K</th>
+              <th class="p-4 text-right text-purple-300">D</th>
+              <th class="p-4 text-right text-blue-300">DIF</th>
+              <th class="p-4 text-right text-blue-300">MACD</th>
             </tr>
           </thead>
           <tbody id="detail-rows" class="divide-y divide-gray-800/60 text-gray-300">
@@ -362,6 +509,94 @@
 
           renderDynamicNarrative(data);
 
+          // ── Technical Indicators Panel ──
+          const latest = data.chart_data[data.chart_data.length - 1] || {};
+          const fmt = v => (v === null || v === undefined) ? '—' : Number(v).toFixed(2);
+          const fmtInt = v => (v === null || v === undefined) ? '—' : Number(v).toLocaleString();
+
+          // RSI
+          const rsiVal = latest.RSI;
+          const rsiEl = document.getElementById('ti-rsi');
+          const rsiLabel = document.getElementById('ti-rsi-label');
+          rsiEl.innerText = fmt(rsiVal);
+          if (rsiVal !== null && rsiVal !== undefined) {
+            if (rsiVal >= 70) { rsiEl.className = 'text-3xl font-extrabold text-red-400'; rsiLabel.innerText = '超買'; rsiLabel.className = 'text-xs font-bold text-red-400'; }
+            else if (rsiVal <= 30) { rsiEl.className = 'text-3xl font-extrabold text-emerald-400'; rsiLabel.innerText = '超賣'; rsiLabel.className = 'text-xs font-bold text-emerald-400'; }
+            else { rsiEl.className = 'text-3xl font-extrabold text-white'; rsiLabel.innerText = '中性'; rsiLabel.className = 'text-xs font-bold text-gray-400'; }
+          }
+
+          // MACD
+          document.getElementById('ti-dif').innerText = fmt(latest.DIF);
+          document.getElementById('ti-macd').innerText = fmt(latest.MACD);
+          const oscEl = document.getElementById('ti-osc');
+          oscEl.innerText = fmt(latest.OSC);
+          if (latest.OSC !== null && latest.OSC !== undefined) {
+            oscEl.className = latest.OSC >= 0 ? 'font-bold text-red-400' : 'font-bold text-emerald-400';
+          }
+
+          // KD
+          document.getElementById('ti-k').innerText = fmt(latest.K);
+          document.getElementById('ti-d').innerText = fmt(latest.D);
+          const kdCrossEl = document.getElementById('ti-kd-cross');
+          if (latest.K !== null && latest.D !== null && latest.K !== undefined && latest.D !== undefined) {
+            if (latest.K > latest.D) { kdCrossEl.innerText = '↑ 金叉'; kdCrossEl.className = 'font-bold text-xs text-red-400'; }
+            else if (latest.K < latest.D) { kdCrossEl.innerText = '↓ 死叉'; kdCrossEl.className = 'font-bold text-xs text-emerald-400'; }
+            else { kdCrossEl.innerText = '持平'; kdCrossEl.className = 'font-bold text-xs text-gray-400'; }
+          }
+
+          // ATR
+          document.getElementById('ti-atr').innerText = fmt(latest.ATR);
+
+          // Bollinger
+          document.getElementById('ti-bb-upper').innerText = fmtInt(latest.BB_Upper);
+          document.getElementById('ti-bb-mid').innerText = fmtInt(latest.BB_Middle);
+          document.getElementById('ti-bb-lower').innerText = fmtInt(latest.BB_Lower);
+
+          // ── Risk & Return Panel ──
+          const em = data.extended_metrics || {};
+          const fmtPct = (v, withSign) => {
+            if (v === null || v === undefined) return '—';
+            const s = withSign && v >= 0 ? '+' : '';
+            return s + Number(v).toFixed(2) + '%';
+          };
+
+          // Returns
+          const monthlyEl = document.getElementById('rr-monthly');
+          monthlyEl.innerText = fmtPct(em.monthly_return_pct, true);
+          monthlyEl.className = em.monthly_return_pct >= 0 ? 'font-bold text-lg text-red-400' : 'font-bold text-lg text-emerald-400';
+          const quarterlyEl = document.getElementById('rr-quarterly');
+          quarterlyEl.innerText = fmtPct(em.quarterly_return_pct, true);
+          quarterlyEl.className = em.quarterly_return_pct >= 0 ? 'font-bold text-lg text-red-400' : 'font-bold text-lg text-emerald-400';
+
+          // Volatility
+          document.getElementById('rr-volatility').innerText = fmtPct(em.annualized_volatility_pct, false);
+
+          // 52-week
+          document.getElementById('rr-52-high').innerText = fmtInt(em.week_52_high);
+          document.getElementById('rr-52-low').innerText = fmtInt(em.week_52_low);
+          document.getElementById('rr-pct-high').innerText = fmtPct(em.pct_from_52_high, true);
+          document.getElementById('rr-pct-low').innerText = fmtPct(em.pct_from_52_low, true);
+
+          // VWAP & Streaks
+          document.getElementById('rr-vwap').innerText = fmtInt(em.vwap);
+          document.getElementById('rr-max-up').innerText = (em.max_consecutive_up_days || 0) + ' 天';
+          document.getElementById('rr-max-down').innerText = (em.max_consecutive_down_days || 0) + ' 天';
+
+          // Support / Resistance
+          document.getElementById('rr-support').innerText = fmtInt(em.support_level);
+          document.getElementById('rr-resistance').innerText = fmtInt(em.resistance_level);
+
+          // Divergence
+          const divInfo = em.volume_price_divergence || {};
+          const divStatusEl = document.getElementById('rr-div-status');
+          divStatusEl.innerText = divInfo.status || '—';
+          document.getElementById('rr-div-desc').innerText = divInfo.desc || '—';
+          if (divInfo.status && divInfo.status !== '無') {
+            divStatusEl.className = 'text-lg font-bold text-orange-400';
+          } else {
+            divStatusEl.className = 'text-lg font-bold text-gray-400';
+          }
+
           // Populate text fields
           document.getElementById('updated-at').innerText = data.updated_at;
           document.getElementById('last-close').innerText = data.summary.last_close.toLocaleString();
@@ -463,6 +698,11 @@
               <td class="p-4 text-right ${changeClass}">${changeSign} ${Math.abs(row.Change).toLocaleString()}</td>
               <td class="p-4 text-right text-gray-400">${row.Volume.toLocaleString()}</td>
               <td class="p-4 text-right text-gray-400">${(row.Amount / 100000000).toFixed(2)}</td>
+              <td class="p-4 text-right text-purple-300">${row.RSI != null ? row.RSI.toFixed(1) : '—'}</td>
+              <td class="p-4 text-right text-purple-300">${row.K != null ? row.K.toFixed(1) : '—'}</td>
+              <td class="p-4 text-right text-purple-300">${row.D != null ? row.D.toFixed(1) : '—'}</td>
+              <td class="p-4 text-right text-blue-300">${row.DIF != null ? row.DIF.toFixed(2) : '—'}</td>
+              <td class="p-4 text-right text-blue-300">${row.MACD != null ? row.MACD.toFixed(2) : '—'}</td>
             `;
             rowsContainer.appendChild(tr);
           });
@@ -473,6 +713,9 @@
           const ma5 = data.chart_data.map(d => d.MA5);
           const ma20 = data.chart_data.map(d => d.MA20);
           const ma60 = data.chart_data.map(d => d.MA60);
+          const bbUpper = data.chart_data.map(d => d.BB_Upper);
+          const bbLower = data.chart_data.map(d => d.BB_Lower);
+          const rsiData = data.chart_data.map(d => d.RSI);
 
           const ctx = document.getElementById('priceChart').getContext('2d');
           new Chart(ctx, {
@@ -513,6 +756,24 @@
                   borderWidth: 1.5,
                   pointRadius: 0,
                   tension: 0.15
+                },
+                {
+                  label: '布林上軌',
+                  data: bbUpper,
+                  borderColor: 'rgba(239, 68, 68, 0.3)',
+                  borderWidth: 1,
+                  pointRadius: 0,
+                  tension: 0.15,
+                  borderDash: [3, 3]
+                },
+                {
+                  label: '布林下軌',
+                  data: bbLower,
+                  borderColor: 'rgba(52, 211, 153, 0.3)',
+                  borderWidth: 1,
+                  pointRadius: 0,
+                  tension: 0.15,
+                  borderDash: [3, 3]
                 }
               ]
             },
@@ -547,6 +808,75 @@
                 }
               }
             }
+          });
+
+          // RSI Sub-chart
+          const rsiCtx = document.getElementById('rsiChart').getContext('2d');
+          new Chart(rsiCtx, {
+            type: 'line',
+            data: {
+              labels: dates,
+              datasets: [{
+                label: 'RSI (14)',
+                data: rsiData,
+                borderColor: '#a855f7',
+                borderWidth: 2,
+                pointRadius: 0,
+                pointHoverRadius: 4,
+                tension: 0.2,
+                fill: true,
+                backgroundColor: 'rgba(168, 85, 247, 0.08)'
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  mode: 'index',
+                  intersect: false,
+                  backgroundColor: 'rgba(17, 24, 39, 0.95)',
+                  borderColor: 'rgba(75, 85, 99, 0.3)',
+                  borderWidth: 1,
+                  callbacks: {
+                    label: ctx => 'RSI: ' + (ctx.parsed.y != null ? ctx.parsed.y.toFixed(2) : '—')
+                  }
+                },
+                annotation: {}
+              },
+              scales: {
+                x: { grid: { display: false }, ticks: { color: '#6b7280', font: { size: 10 } } },
+                y: {
+                  min: 0, max: 100,
+                  grid: { color: 'rgba(75, 85, 99, 0.15)' },
+                  ticks: { color: '#6b7280', font: { size: 10 }, stepSize: 25 }
+                }
+              }
+            },
+            plugins: [{
+              id: 'rsiLines',
+              beforeDraw: (chart) => {
+                const { ctx, chartArea, scales } = chart;
+                if (!chartArea) return;
+                // 70 line
+                ctx.strokeStyle = 'rgba(239, 68, 68, 0.25)';
+                ctx.lineWidth = 1;
+                ctx.setLineDash([5, 5]);
+                const y70 = scales.y.getPixelForValue(70);
+                ctx.beginPath(); ctx.moveTo(chartArea.left, y70); ctx.lineTo(chartArea.right, y70); ctx.stroke();
+                // 30 line
+                ctx.strokeStyle = 'rgba(52, 211, 153, 0.25)';
+                const y30 = scales.y.getPixelForValue(30);
+                ctx.beginPath(); ctx.moveTo(chartArea.left, y30); ctx.lineTo(chartArea.right, y30); ctx.stroke();
+                // 50 line
+                ctx.strokeStyle = 'rgba(156, 163, 175, 0.15)';
+                ctx.setLineDash([2, 4]);
+                const y50 = scales.y.getPixelForValue(50);
+                ctx.beginPath(); ctx.moveTo(chartArea.left, y50); ctx.lineTo(chartArea.right, y50); ctx.stroke();
+                ctx.setLineDash([]);
+              }
+            }]
           });
 
         })
