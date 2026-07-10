@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-09 15:41:09",
+  "updated_at": "2026-07-10 15:41:05",
   "summary": {
     "stock_code": "6770",
     "stock_name": "力積電",
@@ -10,8 +10,8 @@
     "avg_close": 72.18,
     "highest_price": 77.4,
     "lowest_price": 67.1,
-    "total_volume": 861915470,
-    "total_amount": 62636532107,
+    "total_volume": 869026470,
+    "total_amount": 63144688607,
     "last_close": 71.1,
     "weekly_return_pct": -3.13
   },
@@ -1587,10 +1587,10 @@
       "High": 74.3,
       "Low": 70.9,
       "Close": 71.1,
-      "Volume": 149875667,
-      "Amount": 10853705585,
+      "Volume": 156986667,
+      "Amount": 11361862085,
       "Change": -0.1,
-      "Transactions": 74893,
+      "Transactions": 74897,
       "MA5": 71.68,
       "MA20": 74.69,
       "MA60": 67.32,
@@ -1604,8 +1604,8 @@
       "BB_Upper": 85.29,
       "BB_Middle": 74.69,
       "BB_Lower": 64.08,
-      "Vol_MA5": 141282182,
-      "Vol_MA20": 220927991
+      "Vol_MA5": 142704382,
+      "Vol_MA20": 221283541
     }
   ]
 }

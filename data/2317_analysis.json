@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-09 15:41:18",
+  "updated_at": "2026-07-10 15:41:14",
   "summary": {
     "stock_code": "2317",
     "stock_name": "鴻海",
@@ -10,8 +10,8 @@
     "avg_close": 238.92,
     "highest_price": 247.5,
     "lowest_price": 234.0,
-    "total_volume": 292170927,
-    "total_amount": 69921660542,
+    "total_volume": 292844927,
+    "total_amount": 70082105042,
     "last_close": 237.5,
     "weekly_return_pct": -1.25
   },
@@ -1587,10 +1587,10 @@
       "High": 240.0,
       "Low": 234.5,
       "Close": 237.5,
-      "Volume": 39854079,
-      "Amount": 9469499666,
+      "Volume": 40528079,
+      "Amount": 9629944166,
       "Change": 0.0,
-      "Transactions": 34036,
+      "Transactions": 34038,
       "MA5": 238.9,
       "MA20": 253.25,
       "MA60": 249.94,
@@ -1604,8 +1604,8 @@
       "BB_Upper": 276.77,
       "BB_Middle": 253.25,
       "BB_Lower": 229.73,
-      "Vol_MA5": 44854758,
-      "Vol_MA20": 59413747
+      "Vol_MA5": 44989558,
+      "Vol_MA20": 59447447
     }
   ]
 }

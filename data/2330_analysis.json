@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-09 15:40:54",
+  "updated_at": "2026-07-10 15:40:51",
   "summary": {
     "stock_code": "2330",
     "stock_name": "台積電",
@@ -10,8 +10,8 @@
     "avg_close": 2448.33,
     "highest_price": 2500.0,
     "lowest_price": 2415.0,
-    "total_volume": 177335847,
-    "total_amount": 434856095506,
+    "total_volume": 181468547,
+    "total_amount": 444890733651,
     "last_close": 2415.0,
     "weekly_return_pct": -1.23
   },
@@ -36,7 +36,7 @@
     "week_52_low": 1740.0,
     "pct_from_52_high": -4.73,
     "pct_from_52_low": 38.79,
-    "vwap": 2118.18,
+    "vwap": 2118.47,
     "max_consecutive_up_days": 4,
     "max_consecutive_down_days": 4,
     "support_level": 2025.0,
@@ -1587,10 +1587,10 @@
       "High": 2460.0,
       "Low": 2415.0,
       "Close": 2415.0,
-      "Volume": 30548318,
-      "Amount": 74363096890,
+      "Volume": 34681018,
+      "Amount": 84397735035,
       "Change": -50.0,
-      "Transactions": 201686,
+      "Transactions": 201698,
       "MA5": 2445.0,
       "MA20": 2411.25,
       "MA60": 2293.92,
@@ -1604,8 +1604,8 @@
       "BB_Upper": 2538.49,
       "BB_Middle": 2411.25,
       "BB_Lower": 2284.01,
-      "Vol_MA5": 28283311,
-      "Vol_MA20": 38482276
+      "Vol_MA5": 29109851,
+      "Vol_MA20": 38688911
     }
   ]
 }
