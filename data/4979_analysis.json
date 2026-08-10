@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-08-07 15:40:44",
+  "updated_at": "2026-08-10 15:41:04",
   "summary": {
     "stock_code": "4979",
     "stock_name": "華星光",
     "market": "tpex",
-    "data_source": "yahoo-two",
+    "data_source": "yahoo",
     "start_date": "2026-07-31",
     "end_date": "2026-08-07",
     "avg_close": 448.75,
