@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-24 15:41:05",
+  "updated_at": "2026-09-25 15:40:51",
   "summary": {
     "stock_code": "4979",
     "stock_name": "華星光",
@@ -10,8 +10,8 @@
     "avg_close": 590.5,
     "highest_price": 650.0,
     "lowest_price": 532.0,
-    "total_volume": 52337520,
-    "total_amount": 31384025158,
+    "total_volume": 52006601,
+    "total_amount": 31197717761,
     "last_close": 563.0,
     "weekly_return_pct": -7.86
   },
@@ -36,7 +36,7 @@
     "week_52_low": 249.0,
     "pct_from_52_high": -26.12,
     "pct_from_52_low": 126.1,
-    "vwap": 417.47,
+    "vwap": 417.45,
     "max_consecutive_up_days": 12,
     "max_consecutive_down_days": 6,
     "support_level": 320.5,
@@ -1587,8 +1587,8 @@
       "High": 590.0,
       "Low": 559.0,
       "Close": 563.0,
-      "Volume": 8874772,
-      "Amount": 4996496636,
+      "Volume": 8543853,
+      "Amount": 4810189239,
       "Change": -27.0,
       "Transactions": 0,
       "MA5": 597.4,
@@ -1604,8 +1604,8 @@
       "BB_Upper": 650.26,
       "BB_Middle": 584.85,
       "BB_Lower": 519.44,
-      "Vol_MA5": 10283124,
-      "Vol_MA20": 7020768
+      "Vol_MA5": 10216940,
+      "Vol_MA20": 7004222
     }
   ]
 }
