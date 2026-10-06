@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-05 15:40:53",
+  "updated_at": "2026-10-06 15:44:47",
   "summary": {
     "stock_code": "6770",
     "stock_name": "力積電",
     "market": "twse",
-    "data_source": "twse",
+    "data_source": "yahoo",
     "start_date": "2026-09-29",
     "end_date": "2026-10-05",
     "avg_close": 74.88,

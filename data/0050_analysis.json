@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-05 15:40:57",
+  "updated_at": "2026-10-06 15:45:51",
   "summary": {
     "stock_code": "0050",
     "stock_name": "元大台灣50",
     "market": "twse",
-    "data_source": "twse",
+    "data_source": "yahoo",
     "start_date": "2026-09-29",
     "end_date": "2026-10-05",
     "avg_close": 113.0,
