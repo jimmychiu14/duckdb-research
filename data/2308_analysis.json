@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-08 15:40:39",
+  "updated_at": "2026-10-09 15:41:10",
   "summary": {
     "stock_code": "2308",
     "stock_name": "台達電",
@@ -10,8 +10,8 @@
     "avg_close": 1966.67,
     "highest_price": 2115.0,
     "lowest_price": 1860.0,
-    "total_volume": 61222200,
-    "total_amount": 121205846962,
+    "total_volume": 61450200,
+    "total_amount": 121655034322,
     "last_close": 1965.0,
     "weekly_return_pct": 4.24
   },
@@ -36,7 +36,7 @@
     "week_52_low": 1115.0,
     "pct_from_52_high": -23.98,
     "pct_from_52_low": 76.23,
-    "vwap": 1792.39,
+    "vwap": 1792.41,
     "max_consecutive_up_days": 7,
     "max_consecutive_down_days": 6,
     "support_level": 1425.0,
@@ -1587,10 +1587,10 @@
       "High": 1990.0,
       "Low": 1950.0,
       "Close": 1965.0,
-      "Volume": 5294606,
-      "Amount": 10431649040,
+      "Volume": 5522606,
+      "Amount": 10880836400,
       "Change": -25.0,
-      "Transactions": 27536,
+      "Transactions": 27538,
       "MA5": 1979.0,
       "MA20": 1831.0,
       "MA60": 1783.92,
@@ -1604,8 +1604,8 @@
       "BB_Upper": 2090.55,
       "BB_Middle": 1831.0,
       "BB_Lower": 1571.45,
-      "Vol_MA5": 11020477,
-      "Vol_MA20": 12250816
+      "Vol_MA5": 11066077,
+      "Vol_MA20": 12262216
     }
   ]
 }
