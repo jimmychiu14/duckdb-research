@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-28 15:40:34",
+  "updated_at": "2026-10-29 15:46:43",
   "summary": {
     "stock_code": "2317",
     "stock_name": "鴻海",
     "market": "twse",
-    "data_source": "twse",
+    "data_source": "yahoo",
     "start_date": "2026-10-21",
     "end_date": "2026-10-28",
     "avg_close": 248.5,

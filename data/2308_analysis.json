@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-28 15:40:39",
+  "updated_at": "2026-10-29 15:47:47",
   "summary": {
     "stock_code": "2308",
     "stock_name": "台達電",
     "market": "twse",
-    "data_source": "twse",
+    "data_source": "yahoo",
     "start_date": "2026-10-21",
     "end_date": "2026-10-28",
     "avg_close": 1561.25,
